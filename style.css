@@ -1,28 +1,51 @@
-/* GLOBAL FONT */
-body {
-  font-family: 'Inter', sans-serif;
+/* Custom Effects */
+.text-glow {
+    text-shadow: 0 0 15px rgba(220, 38, 38, 0.6);
 }
 
-/* CUSTOM SHADOW */
-.shadow-card {
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+.red-glow {
+    box-shadow: 0 0 25px rgba(220, 38, 38, 0.4);
 }
 
-.particle {
-  position: fixed;
-  top: -20px;
-  width: 6px;
-  height: 6px;
-  background: gold;
-  border-radius: 50%;
-  filter: blur(1px);
-  opacity: 0.7;
-  pointer-events: none;
-  animation: fall linear forwards;
-  z-index: 999;
+/* Glassmorphism Buttons */
+.glass-btn {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@keyframes fall {
-  0% { transform: translateY(0) scale(1); opacity: 0.9; }
-  100% { transform: translateY(120vh) scale(0.3); opacity: 0; }
+.glass-btn:hover {
+    background: rgba(220, 38, 38, 0.1);
+    border-color: #dc2626;
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Pulse Animation for Chat */
+.pulse-red {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+}
+
+.service-card:hover {
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.07);
 }

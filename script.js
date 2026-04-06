@@ -1,97 +1,34 @@
-console.log("🔥 Ferrari Mode Activated — Powered by Young Isis! Grrrt!");
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Trigger Initial Reveal
+    const revealElement = document.querySelector('.reveal');
+    setTimeout(() => {
+        revealElement.classList.add('active');
+    }, 200);
 
-// ========== LETTER-BY-LETTER HERO ANIMATION ==========
-document.addEventListener("DOMContentLoaded", () => {
-  const heroText = document.querySelector("h1");
+    // 2. Scroll Reveal for Service Cards
+    const observerOptions = {
+        threshold: 0.1
+    };
 
-  const text = heroText.innerText;
-  heroText.innerHTML = "";
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    }, observerOptions);
 
-  // Wrap each letter
-  [...text].forEach((char, i) => {
-    const span = document.createElement("span");
-    span.innerText = char;
-    span.style.opacity = 0;
-    span.style.display = "inline-block";
-    span.style.transition = "all .4s ease";
-    span.style.transform = "translateY(20px)";
-    span.style.transitionDelay = `${i * 40}ms`;
-    heroText.appendChild(span);
-  });
-
-  // Trigger animation
-  setTimeout(() => {
-    heroText.querySelectorAll("span").forEach((letter) => {
-      letter.style.opacity = 1;
-      letter.style.transform = "translateY(0)";
-    });
-  }, 200);
-});
-
-
-// ========== GOLD GLOW ON SCROLL (supercar shine) ==========
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("glow-gold");
-      }
-    });
-  },
-  { threshold: 0.3 }
-);
-
-document.querySelectorAll(".service-card").forEach((card) => observer.observe(card));
-
-
-// ========== SMOOTH SCROLL ==========
-document.querySelectorAll("a[href^='#']").forEach((link) => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    const target = document.querySelector(link.getAttribute("href"));
-    target.scrollIntoView({ behavior: "smooth" });
-  });
-});
-
-
-// ========== PARTICLE GOLD EFFECT ==========
-const createParticle = () => {
-  const particle = document.createElement("div");
-  particle.classList.add("particle");
-
-  particle.style.left = `${Math.random() * 100}%`;
-  particle.style.animationDuration = `${3 + Math.random() * 5}s`;
-  document.body.appendChild(particle);
-
-  setTimeout(() => particle.remove(), 8000);
-};
-
-setInterval(createParticle, 400);
-
-
-// ========== CONTACT FORM WEBHOOK ==========
-const form = document.getElementById("contactForm");
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const data = {
-    name: form.name.value,
-    email: form.email.value,
-    message: form.message.value
-  };
-
-  try {
-    await fetch("YOUR_WEBHOOK_URL", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(20px)";
+        card.style.transition = "all 0.6s ease-out";
+        observer.observe(card);
     });
 
-    alert("Message sent! 🚀");
-    form.reset();
-  } catch (error) {
-    alert("Oops! Something went wrong.");
-    console.error(error);
-  }
+    // 3. Simple AI Button Alert
+    const aiBtn = document.querySelector('.pulse-red');
+    aiBtn.addEventListener('click', () => {
+        alert("AI Agent is starting up... Connection to n8n successful!");
+    });
 });
