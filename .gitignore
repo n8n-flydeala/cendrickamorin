@@ -1,0 +1,14 @@
+# Dependency folders
+node_modules/
+
+# Secrets and API Keys
+.env
+*.log
+
+# OS generated files
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# IDE settings
+.vscode/
