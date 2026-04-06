@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function askCendrickAI(userQuestion) {
-    const response = await fetch('https://flydeala.app.n8n.cloud/webhook-test/ask-ai', {
+    const response = await fetch('https://flydeala.app.n8n.cloud/webhook/ask-ai', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
