@@ -1,131 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- TAILWIND CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <title>Young Isis — Automation & AI Systems</title>
-
-  <style>
-    /* Smooth fade animation */
-    .fade-in {
-      animation: fadeIn 1.5s ease-in-out forwards;
-      opacity: 0;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Automation Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        /* Red Glow Effect */
+        .red-glow {
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+        }
+    </style>
 </head>
+<body class="flex items-center justify-center min-h-screen p-6">
 
-<body class="bg-black text-gray-200 tracking-wide">
+    <div class="max-w-5xl w-full grid md:grid-cols-2 gap-12 items-center">
+        
+        <div class="space-y-6">
+            <div class="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-green-400 border border-green-400 rounded-full bg-green-400/10">
+                ● AVAILABLE FOR PROJECTS
+            </div>
+            
+            <h1 class="text-6xl font-bold tracking-tighter">
+                Cendrick <span class="text-red-600 text-glow">Amorin</span>
+            </h1>
+            
+            <p class="text-xl text-gray-400 font-medium border-l-2 border-gray-700 pl-4">
+                AI Automation Specialist | Web Designer | <br>
+                GoHighLevel CRM Expert
+            </p>
+            
+            <p class="text-gray-500 leading-relaxed max-w-md">
+                Expert in AI automation, strategic web design, and workflow optimization. 
+                I create intelligent systems that streamline operations and scale revenue.
+            </p>
 
-  <!-- ===== HERO ===== -->
-  <header class="h-screen flex flex-col justify-center items-center text-center px-6 fade-in">
-
-    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-yellow-500 to-yellow-200 text-transparent bg-clip-text">
-      Premium Automation Systems
-    </h1>
-
-    <p class="text-lg md:text-2xl max-w-3xl text-gray-400 leading-relaxed">
-      I build high-performance automation workflows, AI agents, and digital systems
-      designed for scale, speed, and profit.
-    </p>
-
-    <a 
-      href="#services"
-      class="mt-10 px-10 py-4 text-lg bg-gradient-to-r from-yellow-500 to-yellow-300 
-             text-black font-bold rounded-xl shadow-[0_0_20px_rgba(255,215,0,0.5)]
-             hover:shadow-[0_0_35px_rgba(255,215,0,0.8)] transition-all">
-      Explore Services
-    </a>
-
-  </header>
-
-
-  <!-- ===== SERVICES ===== -->
-  <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-
-  <div class="p-10 bg-gradient-to-br from-gray-900 to-black border border-gray-800 
-              rounded-2xl shadow-xl hover:scale-105 transition fade-in service-card">
-    <h3 class="text-2xl font-semibold text-yellow-300 mb-3">Automation Workflows</h3>
-    <p class="text-gray-400">n8n, Make, Zapier, API integrations, backend automations.</p>
-  </div>
-
-  <div class="p-10 bg-gradient-to-br from-gray-900 to-black border border-gray-800 
-              rounded-2xl shadow-xl hover:scale-105 transition fade-in delay-75 service-card">
-    <h3 class="text-2xl font-semibold text-yellow-300 mb-3">Landing Pages</h3>
-    <p class="text-gray-400">High-performance frontend builds with Tailwind & custom JS.</p>
-  </div>
-
-  <div class="p-10 bg-gradient-to-br from-gray-900 to-black border border-gray-800 
-              rounded-2xl shadow-xl hover:scale-105 transition fade-in delay-150 service-card">
-    <h3 class="text-2xl font-semibold text-yellow-300 mb-3">AI Assistants</h3>
-    <p class="text-gray-400">Custom GPTs, AI bots, automation agents with real-world logic.</p>
-  </div>
-
-</div>
-  </section>
-
-
-  <!-- ===== CONTACT ===== -->
-  <section id="contact" class="py-24 px-6 bg-black border-t border-gray-800">
-    <h2 class="text-4xl font-bold text-center mb-14 text-yellow-400">Work With Me</h2>
-
-    <div class="max-w-xl mx-auto">
-      <form id="contactForm" class="space-y-6 bg-gray-900/40 backdrop-blur-xl 
-                                   p-10 border border-gray-700 rounded-2xl shadow-lg fade-in">
-
-        <!-- NAME -->
-        <div>
-          <label class="text-gray-300 mb-2 block">Name</label>
-          <input 
-            type="text" id="name" name="name"
-            class="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-gray-200 
-                   focus:ring-2 focus:ring-yellow-400 outline-none"
-            placeholder="Your full name" required />
+            <div class="flex gap-4 pt-4">
+                <button class="px-8 py-3 bg-transparent border border-gray-700 rounded-lg hover:border-red-600 transition-all duration-300 font-semibold hover:red-glow">
+                    View My Work
+                </button>
+                <button class="px-8 py-3 bg-transparent border border-gray-700 rounded-lg hover:border-red-600 transition-all duration-300 font-semibold hover:red-glow">
+                    View Resume
+                </button>
+            </div>
         </div>
 
-        <!-- EMAIL -->
-        <div>
-          <label class="text-gray-300 mb-2 block">Email</label>
-          <input 
-            type="email" id="email" name="email"
-            class="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-gray-200 
-                   focus:ring-2 focus:ring-yellow-400 outline-none"
-            placeholder="you@example.com" required />
+        <div class="relative flex justify-center">
+            <div class="absolute inset-0 bg-red-600/10 blur-[100px] rounded-full"></div>
+            
+            <div class="relative z-10 w-80 h-96 overflow-hidden rounded-2xl border border-white/10 grayscale hover:grayscale-0 transition duration-500">
+                <img src="images/profile-pic..jpg" alt="Profile" class="w-full h-full object-cover">
+            </div>
+
+            <div class="absolute -top-4 -right-4 w-12 h-12 bg-[#111] border border-red-600/50 rounded-full flex items-center justify-center red-glow animate-bounce">
+                <span class="text-red-500">⚡</span>
+            </div>
         </div>
 
-        <!-- MESSAGE -->
-        <div>
-          <label class="text-gray-300 mb-2 block">Message</label>
-          <textarea 
-            id="message" name="message" rows="5"
-            class="w-full bg-black/40 border border-gray-700 rounded-lg px-4 py-3 text-gray-200
-                   focus:ring-2 focus:ring-yellow-400 outline-none"
-            placeholder="Tell me what you need built..." required></textarea>
-        </div>
-
-        <!-- BUTTON -->
-        <button 
-          type="submit"
-          class="w-full py-4 font-bold bg-gradient-to-r from-yellow-500 to-yellow-300 
-                 text-black rounded-lg hover:opacity-90 shadow-[0_0_25px_rgba(255,215,0,0.7)] transition">
-          Send Message
-        </button>
-      </form>
     </div>
-  </section>
 
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="py-8 text-center text-gray-500 border-t border-gray-800">
-    © 2026 Young Isis — Premium Automation Systems
-  </footer>
+    <div class="fixed bottom-8 right-8">
+        <button class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full shadow-lg flex items-center gap-2 transition-all font-bold">
+            <span>💬</span> Talk to My AI
+        </button>
+    </div>
 
 </body>
 </html>
