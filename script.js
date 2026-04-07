@@ -1,112 +1,47 @@
-console.log("Luxury Mode Loaded — Young Isis Grrrt!");
+const FORM_WEBHOOK_URL = "https://flydeala.app.n8n.cloud/webhook-test/efc5cc4a-63c8-4386-a512-38f216236821";
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+    const workForm = document.getElementById("workWithMeForm");
+    
+    if (workForm) {
+        workForm.onsubmit = async (e) => {
+            e.preventDefault(); // Eto ang pinaka-importante para hindi mag-refresh
+            e.stopImmediatePropagation(); 
 
-    // 1. HERO FADE-IN EFFECT
-    const hero = document.querySelector(".hero-fade");
-    if (hero) {
-        hero.style.opacity = 0;
-        setTimeout(() => {
-            hero.style.transition = "1.4s";
-            hero.style.opacity = 1;
-        }, 200);
-    }
+            console.log("Attempting to send data...");
+            
+            const submitBtn = workForm.querySelector('button[type="submit"]');
+            submitBtn.textContent = "Sending...";
+            submitBtn.disabled = true;
 
-    // 2. SERVICE REVEAL (INTERSECTION OBSERVER)
-    const cards = document.querySelectorAll('.lux-service-card');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.style.opacity = 1;
-                e.target.style.transform = "translateY(0)";
-            }
-        });
-    });
-
-    cards.forEach(card => {
-        card.style.opacity = 0;
-        card.style.transform = "translateY(20px)";
-        card.style.transition = "0.7s ease-out";
-        observer.observe(card);
-    });
-
-    // 3. CUSTOM CHAT UI LOGIC
-    const chatContainer = document.getElementById('chat-container');
-    const closeBtn = document.getElementById('close-chat');
-    const sendBtn = document.getElementById('send-btn');
-    const sessionId = 'session-' + Math.random().toString(36).substring(2, 15);
-    const userInput = document.getElementById('user-input');
-    const chatMessages = document.getElementById('chat-messages');
-    const askBtn = document.querySelector('.lux-float-btn');
-
-    // Open/Close Chat
-    if (askBtn && chatContainer) {
-        askBtn.addEventListener('click', () => {
-            chatContainer.classList.toggle('hidden');
-        });
-    }
-
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            chatContainer.classList.add('hidden');
-        });
-    }
-
-    // 4. SEND MESSAGE TO n8n
-    if (sendBtn) {
-        sendBtn.addEventListener('click', async () => {
-            const message = userInput.value.trim();
-            if (message) {
-                appendMessage('User', message);
-                userInput.value = '';
-
-                try {
-                    appendMessage('AI', "Hi! I'm Cendrick's AI assistant. For inquiries, please use the contact form below!");
-                } catch (err) {
-                    console.error(err);
-                }
-            }
-        });
-    }
-
-    if (userInput) {
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendBtn.click();
-        });
-    }
-
-    // Helper function to show messages
-    function appendMessage(sender, text) {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = sender === 'User' ? 
-            'bg-gold/20 p-2 mb-2 ml-auto max-w-[80%] rounded-lg text-right' : 
-            'bg-gray-800 p-2 mb-2 mr-auto max-w-[80%] rounded-lg';
-        
-        msgDiv.innerHTML = `<strong>${sender}:</strong> ${text}`;
-        chatMessages.appendChild(msgDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    // 5. CONTACT FORM WEBHOOK
-    const form = document.getElementById("contactForm");
-    if (form) {
-        form.addEventListener("submit", async e => {
-            e.preventDefault();
-            const data = {
-                name: form.name.value,
-                email: form.email.value,
-                message: form.message.value
+            const formData = new FormData(workForm);
+            const payload = {
+                name: formData.get("name"),
+                email: formData.get("email"),
+                message: formData.get("message")
             };
 
             try {
-                // Pwede mo rin i-connect ito sa ibang n8n webhook soon
-                console.log("Form data collected:", data);
-                alert("Message sent successfully ✦ (Make sure to connect your Form Webhook too!)");
-                form.reset();
-            } catch (err) {
-                alert("Error sending message.");
-                console.error(err);
+                const response = await fetch(FORM_WEBHOOK_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    console.log("Success!");
+                    alert("Message sent! Check n8n now.");
+                    workForm.reset();
+                } else {
+                    alert("Webhook error: " + response.status);
+                }
+            } catch (error) {
+                console.error("Connection failed:", error);
+                alert("Failed to connect to n8n. Check your internet or CORS.");
+            } finally {
+                submitBtn.textContent = "Send Message";
+                submitBtn.disabled = false;
             }
-        });
+        };
     }
 });
