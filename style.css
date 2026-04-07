@@ -237,3 +237,22 @@
         font-size: 28px;
     }
 }
+/* Override n8n chat widget colors */
+:root {
+    --chat--color-primary: #C5A572;
+    --chat--color-primary-shade-50: #9e8458;
+    --chat--color-primary-shade-100: #9e8458;
+    --chat--color-secondary: #C5A572;
+    --chat--color-secondary-shade-50: #9e8458;
+    --chat--window--width: 380px;
+    --chat--window--height: 520px;
+    --chat--color-dark: #0a0a0a;
+    --chat--color-light: #111;
+    --chat--message--bot--background: #1a1a1a;
+    --chat--message--user--background: #C5A572;
+    --chat--message--user--color: #000;
+    --chat--header--background: #111;
+    --chat--header--color: #C5A572;
+    --chat--input--background: #111;
+    --chat--input--border-color: rgba(197,165,114,0.3);
+}

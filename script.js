@@ -61,31 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 userInput.value = '';
 
                 try {
-                    // Pakisiguro na naka-PUBLISH ang workflow sa n8n
-                    const response = await fetch('https://flydeala.app.n8n.cloud/webhook/a58fc3ea-6870-4637-bb60-8b979d29e583/chat', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ 
-    action: 'sendMessage',
-    sessionId: sessionId,
-    chatInput: message
-}) 
-                    });
-
-                    if (!response.ok) throw new Error('Network response was not ok');
-
-                    const data = await response.json();
-                    
-                    // n8n returns 'output' for the Chat Trigger response
-                    if (data.output) {
-                        appendMessage('AI', data.output);
-                    } else {
-                        appendMessage('AI', "I received the message but the brain didn't reply. Check n8n logs!");
-                    }
-
+                    appendMessage('AI', "Hi! I'm Cendrick's AI assistant. For inquiries, please use the contact form below!");
                 } catch (err) {
-                    console.error("n8n Error:", err);
-                    appendMessage('AI', 'Error connecting to brain. Check if n8n is Active/Published!');
+                    console.error(err);
                 }
             }
         });
