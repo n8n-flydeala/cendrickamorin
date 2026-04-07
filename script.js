@@ -1,4 +1,4 @@
-const FORM_WEBHOOK_URL = "https://flydeala.app.n8n.cloud/webhook-test/efc5cc4a-63c8-4386-a512-38f216236821";
+const FORM_WEBHOOK_URL = "https://flydeala.app.n8n.cloud/webhook/efc5cc4a-63c8-4386-a512-38f216236821";
 
 document.addEventListener("DOMContentLoaded", () => {
     const workForm = document.getElementById("workWithMeForm");
