@@ -91,6 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    if (userInput) {
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendBtn.click();
+        });
+    }
+
     // Helper function to show messages
     function appendMessage(sender, text) {
         const msgDiv = document.createElement('div');
