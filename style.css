@@ -237,3 +237,13 @@
         font-size: 28px;
     }
 }
+
+/* Itatago nito yung default na bilog na button ng n8n */
+.n8n-chat-widget-bubble {
+    display: none !important;
+}
+
+/* Siguraduhin na nasa harap yung widget pag bumukas */
+.n8n-chat-widget {
+    z-index: 9999 !important;
+}
