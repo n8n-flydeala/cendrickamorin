@@ -87,8 +87,8 @@ document.addEventListener("DOMContentLoaded", () => {
         sendBtn.textContent = '...';
 
         try {
-            const response = await fetch('YOUR_N8N_WEBHOOK_URL_HERE', {
-                method: 'POST',
+            const response = await fetch('https://flydeala.app.n8n.cloud/webhook/chatbot', {
+                method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message: message })
             });
