@@ -7,7 +7,42 @@
   <meta name="description" content="Cendrick Amorin builds practical business systems, automations, CRM workflows, dashboards, and AI-assisted operations for growing teams.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{background:#090909;color:#fff}
+.site-nav{position:sticky;top:0;z-index:40;background:rgba(9,9,9,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.05)}
+.site-nav a{transition:.25s}.site-nav nav a:hover{color:#C5A572}.brand-mark{font-size:12px;font-weight:800;letter-spacing:.18em;color:#C5A572}
+.nav-cta{font-size:12px;font-weight:700;border:1px solid rgba(197,165,114,.4);color:#C5A572;padding:9px 14px;border-radius:999px}
+.hero-section{padding-top:110px;padding-bottom:110px;background:radial-gradient(circle at 75% 30%,rgba(197,165,114,.09),transparent 32%)}
+.eyebrow,.section-kicker{font-size:11px;letter-spacing:.2em;font-weight:800;color:#C5A572}
+.hero-title{font-size:clamp(3rem,7vw,5.6rem);line-height:.98;letter-spacing:-.055em;font-weight:800;max-width:850px}.hero-title span{color:#C5A572}
+.hero-subtitle{font-size:18px;line-height:1.75;color:#aaa;max-width:690px}
+.hero-proof{display:flex;flex-wrap:wrap;gap:8px}.hero-proof span,.tag-row span{font-size:11px;color:#aaa;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);padding:6px 9px;border-radius:999px}
+.primary-btn,.secondary-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 20px;border-radius:10px;font-weight:700;font-size:14px;transition:.25s;cursor:pointer}
+.primary-btn{background:#C5A572;color:#0a0a0a}.primary-btn:hover{background:#d7bc8f;transform:translateY(-2px)}
+.secondary-btn{border:1px solid rgba(197,165,114,.45);color:#C5A572;background:rgba(197,165,114,.03)}.secondary-btn:hover{background:rgba(197,165,114,.1)}
+.hero-panel{border:1px solid rgba(197,165,114,.17);background:linear-gradient(145deg,#111,#0d0d0d);padding:28px;border-radius:22px}
+.hero-panel-label{font-size:10px;letter-spacing:.2em;color:#777;margin-bottom:18px}.logic-stack{display:grid;gap:2px}
+.logic-stack div{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;padding:15px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.logic-stack strong{font-size:12px;color:#C5A572}.logic-stack span{font-size:14px;color:#d0d0d0}
+.system-principle{margin-top:20px;padding:13px;border-radius:10px;background:rgba(197,165,114,.07);color:#C5A572;font-size:12px;text-align:center;letter-spacing:.04em}
+.section-wrap{padding:100px 0}.section-alt{background:#0d0d0d}
+.section-title{font-size:clamp(2rem,4.2vw,3.5rem);line-height:1.08;letter-spacing:-.035em;font-weight:800;margin-top:10px;max-width:820px}
+.section-lead{color:#888;line-height:1.75;max-width:700px;margin-top:18px}.text-left{text-align:left!important}
+.problem-card{border-top:1px solid rgba(197,165,114,.35);padding:26px 4px 0}.problem-number{font-size:11px;color:#C5A572;margin-bottom:22px}.problem-card h3{font-size:20px;font-weight:700;margin-bottom:10px}.problem-card p{font-size:14px;line-height:1.7;color:#888}
+.system-card{border:1px solid rgba(255,255,255,.07);border-radius:18px;overflow:hidden;background:#101010;transition:.3s}.system-card:hover{border-color:rgba(197,165,114,.35);transform:translateY(-3px)}
+.system-img-wrap{aspect-ratio:16/9;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.05)}.system-img-wrap img{width:100%;height:100%;object-fit:cover}
+.system-card-body{padding:24px}.system-meta{font-size:10px;letter-spacing:.1em;color:#999;text-transform:uppercase;display:flex;align-items:center;gap:8px}.status-dot{width:6px;height:6px;border-radius:50%;background:#65d697;box-shadow:0 0 8px rgba(101,214,151,.6)}
+.system-card h3{font-size:22px;line-height:1.25;font-weight:750;margin:14px 0 10px}.system-card p{font-size:14px;line-height:1.7;color:#8f8f8f}.tag-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
+.featured-case{display:flex;align-items:center;background:linear-gradient(145deg,rgba(197,165,114,.09),#101010)}.case-grid{display:grid;gap:10px;margin:22px 0}.case-grid div{display:flex;justify-content:space-between;gap:20px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.06)}.case-grid span{font-size:11px;color:#777;text-transform:uppercase}.case-grid strong{font-size:12px;text-align:right;color:#d9d9d9}.text-link{color:#C5A572;font-size:13px;font-weight:700}
+.process-line{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid rgba(255,255,255,.08)}.process-line>div{padding:24px 22px 10px;border-right:1px solid rgba(255,255,255,.06)}.process-line>div:last-child{border-right:0}.process-line span{font-size:11px;color:#C5A572}.process-line h3{font-size:17px;font-weight:700;margin:18px 0 8px}.process-line p{font-size:13px;color:#858585;line-height:1.6}
+.capability-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.capability-grid div{border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:22px;background:#101010}.capability-grid h3{font-size:15px;font-weight:700;color:#C5A572;margin-bottom:9px}.capability-grid p{font-size:13px;line-height:1.6;color:#888}
+.contact-form{display:grid;gap:14px}.lux-input{width:100%;background:#101010;border:1px solid rgba(255,255,255,.09);padding:15px 16px;border-radius:12px;outline:none;color:white;transition:.25s}.lux-input:focus{border-color:#C5A572;background:#121212}
+.form-state,.form-error{padding:24px;border-radius:14px;margin-top:28px}.form-state{background:rgba(101,214,151,.08);border:1px solid rgba(101,214,151,.18)}.form-error{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);color:#fca5a5}
+.hidden{display:none}
+.lux-float-btn{background:#C5A572;color:#090909;padding:13px 20px;border-radius:999px;font-size:13px;font-weight:800;box-shadow:0 0 24px rgba(197,165,114,.2)}
+#chat-messages::-webkit-scrollbar{width:4px}#chat-messages::-webkit-scrollbar-thumb{background:#444;border-radius:10px}
+@media(max-width:900px){.process-line{grid-template-columns:1fr 1fr}.process-line>div{border-bottom:1px solid rgba(255,255,255,.06)}}
+@media(max-width:700px){.hero-section{padding-top:72px;padding-bottom:72px}.section-wrap{padding:76px 0}.hero-title{font-size:3.2rem}.capability-grid,.process-line{grid-template-columns:1fr}.process-line>div{border-right:0}.lux-float-btn{padding:12px 16px}}
+</style>
   <script>
     tailwind.config = {
       theme: {
@@ -60,25 +95,16 @@
         </div>
       </div>
 
-      <div class="hero-visual-stack">
-        <div class="profile-card">
-          <img src="images/profile-pic.jpg" alt="Cendrick Amorin">
-          <div class="profile-caption">
-            <span>CENDRICK AMORIN</span>
-            <strong>Systems • Automation • AI</strong>
-          </div>
-        </div>
-        <div class="hero-panel compact-panel">
-          <div class="hero-panel-label">HOW I THINK</div>
-          <div class="logic-stack">
+      <div class="hero-panel">
+        <div class="hero-panel-label">HOW I THINK</div>
+        <div class="logic-stack">
           <div><strong>01</strong><span>Understand the real business problem</span></div>
           <div><strong>02</strong><span>Map the current process and bottlenecks</span></div>
           <div><strong>03</strong><span>Design the simplest reliable system</span></div>
           <div><strong>04</strong><span>Automate repetitive work</span></div>
           <div><strong>05</strong><span>Leave clear controls, SOPs, and visibility</span></div>
         </div>
-          <div class="system-principle">Accurate → Simple → Fast → Trainable → Scalable</div>
-        </div>
+        <div class="system-principle">Accurate → Simple → Fast → Trainable → Scalable</div>
       </div>
     </div>
   </section>
@@ -115,9 +141,9 @@
       <h2 class="section-title">Proof through systems, not tool lists.</h2>
       <p class="section-lead">Each project is framed around the business problem, workflow logic, and operational outcome.</p>
 
-      <div class="grid lg:grid-cols-2 gap-6 mt-10">
+      <div class="grid lg:grid-cols-2 gap-8 mt-12">
         <article class="system-card">
-          <div class="system-img-wrap"><img src="images/sales-pipeline.png" alt="Automated sales pipeline workflow"></div>
+          <div class="system-img-wrap"><img src="https://raw.githubusercontent.com/n8n-flydeala/cendrickamorin/portfolio-v2/images/sales-pipeline.png" alt="Automated sales pipeline workflow"></div>
           <div class="system-card-body">
             <div class="system-meta"><span class="status-dot"></span> Operational System</div>
             <h3>Automated Sales Pipeline & Client Nurturing</h3>
@@ -127,7 +153,7 @@
         </article>
 
         <article class="system-card">
-          <div class="system-img-wrap"><img src="images/content-engine.png" alt="AI-powered content workflow"></div>
+          <div class="system-img-wrap"><img src="https://raw.githubusercontent.com/n8n-flydeala/cendrickamorin/portfolio-v2/images/content-engine.png" alt="AI-powered content workflow"></div>
           <div class="system-card-body">
             <div class="system-meta"><span class="status-dot"></span> AI-Assisted Workflow</div>
             <h3>AI Content Engine & Multi-Channel Distribution</h3>
@@ -137,7 +163,7 @@
         </article>
 
         <article class="system-card">
-          <div class="system-img-wrap"><img src="images/Book Funnel Automation.png" alt="Automated book funnel"></div>
+          <div class="system-img-wrap"><img src="https://raw.githubusercontent.com/n8n-flydeala/cendrickamorin/portfolio-v2/images/Book%20Funnel%20Automation.png" alt="Automated book funnel"></div>
           <div class="system-card-body">
             <div class="system-meta"><span class="status-dot"></span> Funnel Automation</div>
             <h3>Digital Product Funnel & Lead Delivery</h3>
@@ -156,7 +182,7 @@
               <div><span>System</span><strong>GHL booking + automation</strong></div>
               <div><span>Goal</span><strong>Cleaner handoffs & faster response</strong></div>
             </div>
-            <a href="https://drive.google.com/file/d/1atalj_F7voqwDvJI0kmxyeN9JbOyYWK-/view?usp=drivesdk" target="_blank" class="text-link">Open SmileCare case study →</a>
+            <a href="https://drive.google.com/file/d/1eT1Rgk7xD8HYcWeL7dNRc9bZz3kc3o0I/view?usp=drive_link" target="_blank" class="text-link">Open full case study →</a>
           </div>
         </article>
       </div>
@@ -167,7 +193,7 @@
     <div class="max-w-6xl mx-auto px-6">
       <div class="section-kicker">HOW I WORK</div>
       <h2 class="section-title">System design before automation.</h2>
-      <div class="process-line mt-10">
+      <div class="process-line mt-12">
         <div><span>01</span><h3>Diagnose</h3><p>Understand the business reality, recurring pain points, and current workflow.</p></div>
         <div><span>02</span><h3>Map</h3><p>Define inputs, decisions, owners, handoffs, outputs, and failure points.</p></div>
         <div><span>03</span><h3>Build</h3><p>Create the simplest system that solves the real problem without adding daily complexity.</p></div>
@@ -251,6 +277,6 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+
 </body>
 </html>
