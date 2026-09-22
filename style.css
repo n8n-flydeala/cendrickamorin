@@ -33,3 +33,13 @@
 #chat-messages::-webkit-scrollbar{width:4px}#chat-messages::-webkit-scrollbar-thumb{background:#444;border-radius:10px}
 @media(max-width:900px){.process-line{grid-template-columns:1fr 1fr}.process-line>div{border-bottom:1px solid rgba(255,255,255,.06)}}
 @media(max-width:700px){.hero-section{padding-top:72px;padding-bottom:72px}.section-wrap{padding:76px 0}.hero-title{font-size:3.2rem}.capability-grid,.process-line{grid-template-columns:1fr}.process-line>div{border-right:0}.lux-float-btn{padding:12px 16px}}
+
+.hero-visual-stack{display:grid;gap:18px;align-items:start}
+.profile-card{position:relative;max-width:360px;margin:0 auto;width:100%;border:1px solid rgba(197,165,114,.2);background:#0f0f0f;border-radius:22px;overflow:hidden}
+.profile-card img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.profile-caption{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:14px 16px;border-top:1px solid rgba(255,255,255,.06)}
+.profile-caption span{font-size:10px;letter-spacing:.18em;color:#C5A572;font-weight:800}
+.profile-caption strong{font-size:11px;color:#8d8d8d;text-align:right}
+.compact-panel{padding:22px}.compact-panel .logic-stack div{padding:11px 0}.compact-panel .system-principle{margin-top:14px;padding:10px}
+@media(max-width:1024px){.hero-section{padding-top:86px;padding-bottom:86px}.profile-card{max-width:320px}}
+@media(max-width:700px){.hero-title{font-size:2.9rem}.hero-subtitle{font-size:16px}.profile-caption{align-items:flex-start;flex-direction:column}.system-card-body{padding:20px}.section-title{font-size:2.25rem}}
