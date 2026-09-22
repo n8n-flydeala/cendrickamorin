@@ -1,112 +1,116 @@
 const FORM_WEBHOOK_URL = "https://flydeala.app.n8n.cloud/webhook/efc5cc4a-63c8-4386-a512-38f216236821";
+const CHAT_WEBHOOK_URL = "https://flydeala.app.n8n.cloud/webhook/chatbot";
 
 document.addEventListener("DOMContentLoaded", () => {
-    const workForm = document.getElementById("workWithMeForm");
-    
-    if (workForm) {
-        workForm.onsubmit = async (e) => {
-            e.preventDefault(); // Eto ang pinaka-importante para hindi mag-refresh
-            e.stopImmediatePropagation(); 
+  const workForm = document.getElementById("workWithMeForm");
+  const successDiv = document.getElementById("form-success");
+  const errorDiv = document.getElementById("form-error");
+  const submitBtn = document.getElementById("submit-btn");
+  const btnText = document.getElementById("btn-text");
+  const btnLoading = document.getElementById("btn-loading");
 
-            console.log("Attempting to send data...");
-            
-            const submitBtn = workForm.querySelector('button[type="submit"]');
-            submitBtn.textContent = "Sending...";
-            submitBtn.disabled = true;
+  if (workForm && submitBtn) {
+    workForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-            const formData = new FormData(workForm);
-            const payload = {
-                name: formData.get("name"),
-                email: formData.get("email"),
-                message: formData.get("message")
-            };
+      const formData = new FormData(workForm);
+      const payload = {
+        name: String(formData.get("name") || "").trim(),
+        email: String(formData.get("email") || "").trim(),
+        message: String(formData.get("message") || "").trim()
+      };
 
-            try {
-                const response = await fetch(FORM_WEBHOOK_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload)
-                });
+      if (!payload.name || !payload.email || !payload.message) return;
 
-                if (response.ok) {
-                    console.log("Success!");
-                    alert("Message sent! Check n8n now.");
-                    workForm.reset();
-                } else {
-                    alert("Webhook error: " + response.status);
-                }
-            } catch (error) {
-                console.error("Connection failed:", error);
-                alert("Failed to connect to n8n. Check your internet or CORS.");
-            } finally {
-                submitBtn.textContent = "Send Message";
-                submitBtn.disabled = false;
-            }
-        };
-    }
-});
-// --- AI CHAT WIDGET TOGGLE LOGIC ---
-document.addEventListener("DOMContentLoaded", () => {
-    const askAiBtn = document.getElementById('custom-ask-btn');
-    const chatContainer = document.getElementById('chat-container');
-    const closeChat = document.getElementById('close-chat');
+      submitBtn.disabled = true;
+      btnText?.classList.add("hidden");
+      btnLoading?.classList.remove("hidden");
+      errorDiv?.classList.add("hidden");
 
-    if (askAiBtn && chatContainer && closeChat) {
-        askAiBtn.addEventListener('click', () => {
-            chatContainer.classList.toggle('hidden');
+      try {
+        const response = await fetch(FORM_WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
         });
 
-        closeChat.addEventListener('click', () => {
-            chatContainer.classList.add('hidden');
-        });
-    }
-});
-// --- AI CHAT SEND LOGIC ---
-document.addEventListener("DOMContentLoaded", () => {
-    const sendBtn = document.getElementById('send-btn');
-    const userInput = document.getElementById('user-input');
-    const chatMessages = document.getElementById('chat-messages');
+        if (!response.ok) throw new Error(`Webhook returned ${response.status}`);
 
-    function addMessage(text, isUser) {
-        const div = document.createElement('div');
-        div.className = isUser 
-            ? 'bg-gold/20 p-3 ml-auto max-w-[85%] rounded-lg text-white text-right' 
-            : 'bg-gray-800 p-3 mr-auto max-w-[85%] rounded-lg text-gray-200';
-        div.textContent = text;
-        chatMessages.appendChild(div);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    async function sendMessage() {
-        const message = userInput.value.trim();
-        if (!message) return;
-
-        addMessage(message, true);
-        userInput.value = '';
-        sendBtn.disabled = true;
-        sendBtn.textContent = '...';
-
-        try {
-            const response = await fetch('https://flydeala.app.n8n.cloud/webhook/chatbot', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: message })
-            });
-            const data = await response.json();
-            addMessage(data.reply || data.message || 'Got your message!', false);
-        } catch (error) {
-            addMessage("Sorry, I can't connect right now.", false);
-        } finally {
-            sendBtn.disabled = false;
-            sendBtn.textContent = 'SEND';
-        }
-    }
-
-    // Click send
-    sendBtn.addEventListener('click', sendMessage);
-
-    // Enter key
-    userInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendMessage();
+        workForm.reset();
+        workForm.classList.add("hidden");
+        successDiv?.classList.remove("hidden");
+      } catch (error) {
+        console.error("Contact form error:", error);
+        errorDiv?.classList.remove("hidden");
+      } finally {
+        submitBtn.disabled = false;
+        btnText?.classList.remove("hidden");
+        btnLoading?.classList.add("hidden");
+      }
     });
+  }
+
+  const askAiBtn = document.getElementById("custom-ask-btn");
+  const chatContainer = document.getElementById("chat-container");
+  const closeChat = document.getElementById("close-chat");
+  const sendBtn = document.getElementById("send-btn");
+  const userInput = document.getElementById("user-input");
+  const chatMessages = document.getElementById("chat-messages");
+
+  if (askAiBtn && chatContainer) {
+    askAiBtn.addEventListener("click", () => chatContainer.classList.toggle("hidden"));
+  }
+  if (closeChat && chatContainer) {
+    closeChat.addEventListener("click", () => chatContainer.classList.add("hidden"));
+  }
+
+  function addMessage(text, isUser) {
+    if (!chatMessages) return;
+    const div = document.createElement("div");
+    div.className = isUser
+      ? "bg-gold/20 p-3 ml-auto max-w-[85%] rounded-lg text-white text-right"
+      : "bg-gray-800 p-3 mr-auto max-w-[85%] rounded-lg text-gray-200";
+    div.textContent = text;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  async function sendMessage() {
+    if (!userInput || !sendBtn) return;
+    const message = userInput.value.trim();
+    if (!message) return;
+
+    addMessage(message, true);
+    userInput.value = "";
+    sendBtn.disabled = true;
+    sendBtn.textContent = "...";
+
+    try {
+      const response = await fetch(CHAT_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      });
+
+      if (!response.ok) throw new Error(`Chat webhook returned ${response.status}`);
+
+      const data = await response.json();
+      addMessage(data.reply || data.message || "Got your message.", false);
+    } catch (error) {
+      console.error("Chat error:", error);
+      addMessage("Sorry, I can't connect right now.", false);
+    } finally {
+      sendBtn.disabled = false;
+      sendBtn.textContent = "SEND";
+      userInput.focus();
+    }
+  }
+
+  sendBtn?.addEventListener("click", sendMessage);
+  userInput?.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
 });
