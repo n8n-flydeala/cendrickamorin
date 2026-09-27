@@ -1,256 +1,584 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cendrick Amorin | AI-Assisted Business Systems Builder</title>
-  <meta name="description" content="Cendrick Amorin builds practical business systems, automations, CRM workflows, dashboards, and AI-assisted operations for growing teams.">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { inter: ['Inter','sans-serif'] },
-          colors: { gold: '#C5A572', darkgold: '#9e8458' }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cendrick Amorin | AI-Assisted Business Systems Builder</title>
+    <meta name="description" content="Practical business systems connecting lead capture, CRM, automation, follow-up, task management, and operational visibility. Explore Cendrick Amorin’s portfolio and demo projects.">
+    <meta name="theme-color" content="#0a0a0a">
+
+    <!-- TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- INTER FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CUSTOM STYLES -->
+    <link rel="stylesheet" href="style.css?v=primeflow-static-1">
+
+    <!-- TAILWIND EXT -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: '#C5A572',
+                        darkgold: '#9e8458'
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
+    </script>
+
+    <style>
+        /* ── Workflow Section ── */
+        .workflow-section {
+            background: #0d0d0d;
+        }
+
+        .workflow-card {
+            background: linear-gradient(145deg, #131313, #0f0f0f);
+            border: 1px solid rgba(197, 165, 114, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .workflow-card:hover {
+            border-color: rgba(197, 165, 114, 0.45);
+            transform: translateY(-4px);
+            box-shadow: 0 24px 48px rgba(197, 165, 114, 0.08);
+        }
+
+        .workflow-img-wrap {
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(197, 165, 114, 0.1);
+        }
+
+        .workflow-img-wrap img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .workflow-card:hover .workflow-img-wrap img {
+            transform: scale(1.03);
+        }
+
+        .workflow-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .workflow-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(197, 165, 114, 0.1);
+            border: 1px solid rgba(197, 165, 114, 0.25);
+            color: #C5A572;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            padding: 4px 10px;
+            border-radius: 999px;
+            text-transform: uppercase;
+        }
+
+        .workflow-badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #4ade80;
+            box-shadow: 0 0 6px #4ade80;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .workflow-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #9ca3af;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
-<body class="bg-[#090909] text-white font-inter overflow-x-hidden">
 
-<header class="site-nav">
-  <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between gap-6">
-    <a href="#top" class="brand-mark">CENDRICK AMORIN</a>
-    <nav class="hidden md:flex items-center gap-6 text-sm text-gray-400">
-      <a href="#problems">Problems I Solve</a>
-      <a href="#systems">Systems</a>
-      <a href="#process">Process</a>
-      <a href="#contact-form">Contact</a>
-    </nav>
-    <a href="#contact-form" class="nav-cta">Work With Me</a>
-  </div>
-</header>
+<body class="bg-[#0a0a0a] text-white font-inter overflow-x-hidden">
+    <a class="skip-link" href="#case-studies">Skip to case studies</a>
+    <main id="main-content">
 
-<main id="top">
-  <section class="hero-section px-6">
-    <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.15fr_.85fr] gap-16 items-center">
-      <div class="space-y-8">
-        <div class="eyebrow">AI-ASSISTED BUSINESS SYSTEMS BUILDER</div>
-        <h1 class="hero-title">
-          I turn messy business processes into
-          <span>clear, usable systems.</span>
-        </h1>
-        <p class="hero-subtitle">
-          I design automation, CRM workflows, dashboards, SOP-driven operations, and AI-assisted systems that help owners reduce manual work and make better decisions.
-        </p>
-        <div class="hero-proof">
-          <span>Automation</span>
-          <span>Operations</span>
-          <span>CRM</span>
-          <span>AI Workflows</span>
-          <span>Documentation</span>
-        </div>
-        <div class="flex flex-wrap gap-4">
-          <a href="#systems" class="primary-btn">View Systems</a>
-          <a href="https://drive.google.com/file/d/1eT1Rgk7xD8HYcWeL7dNRc9bZz3kc3o0I/view?usp=drive_link" target="_blank" class="secondary-btn">View Case Study</a>
-          <a href="https://drive.google.com/file/d/1mhiSgLcsa4AG9bRtNTUCKw5_zy4Pt2K2/view?usp=sharing" target="_blank" class="secondary-btn">Resume</a>
-        </div>
-      </div>
+    <!-- ================= HERO SECTION ================= -->
+    <section id="top" class="min-h-screen flex items-center justify-center px-6 lg:px-24 hero-fade portfolio-hero">
+        <div class="max-w-6xl w-full grid md:grid-cols-2 gap-16 items-center">
 
-      <div class="hero-visual-stack">
-        <div class="profile-card">
-          <img src="images/profile-pic.jpg" alt="Cendrick Amorin">
-          <div class="profile-caption">
-            <span>CENDRICK AMORIN</span>
-            <strong>Systems • Automation • AI</strong>
-          </div>
-        </div>
-        <div class="hero-panel compact-panel">
-          <div class="hero-panel-label">HOW I THINK</div>
-          <div class="logic-stack">
-          <div><strong>01</strong><span>Understand the real business problem</span></div>
-          <div><strong>02</strong><span>Map the current process and bottlenecks</span></div>
-          <div><strong>03</strong><span>Design the simplest reliable system</span></div>
-          <div><strong>04</strong><span>Automate repetitive work</span></div>
-          <div><strong>05</strong><span>Leave clear controls, SOPs, and visibility</span></div>
-        </div>
-          <div class="system-principle">Accurate → Simple → Fast → Trainable → Scalable</div>
-        </div>
-      </div>
-    </div>
-  </section>
+            <!-- LEFT COLUMN: TEXT + BUTTONS -->
+            <div class="space-y-8">
+                <div class="lux-badge">
+                    ● BUSINESS SYSTEMS & AUTOMATION
+                </div>
 
-  <section id="problems" class="section-wrap">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="section-kicker">PROBLEMS I SOLVE</div>
-      <h2 class="section-title">Less chaos. More visibility. Better execution.</h2>
-      <p class="section-lead">I focus on recurring operational problems where a better system can save time, reduce errors, and make the business easier to run.</p>
+                <h1 class="text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] lux-title">
+                    Cendrick <span class="text-gold">Amorin</span>
+                </h1>
 
-      <div class="grid md:grid-cols-3 gap-6 mt-12">
-        <article class="problem-card">
-          <div class="problem-number">01</div>
-          <h3>Leads fall through the cracks</h3>
-          <p>Build CRM pipelines, automated follow-ups, owner alerts, status tracking, and clean handoffs.</p>
-        </article>
-        <article class="problem-card">
-          <div class="problem-number">02</div>
-          <h3>Teams repeat manual work</h3>
-          <p>Map repetitive tasks and automate the right steps without overcomplicating daily operations.</p>
-        </article>
-        <article class="problem-card">
-          <div class="problem-number">03</div>
-          <h3>Owners lack clear visibility</h3>
-          <p>Create dashboards, structured records, exception-based monitoring, and decision-ready information.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+                <p class="text-lg text-gray-300 border-l-2 border-gold pl-4">
+                    <strong class="hero-role">AI-Assisted Business Systems Builder</strong>
+                    <span class="hero-specialties">Automation • Operations • CRM • AI-Assisted Workflows</span>
+                </p>
 
-  <section id="systems" class="section-wrap section-alt">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="section-kicker">FEATURED SYSTEMS</div>
-      <h2 class="section-title">Proof through systems, not tool lists.</h2>
-      <p class="section-lead">Each project is framed around the business problem, workflow logic, and operational outcome.</p>
+                <p class="text-gray-400 max-w-md leading-relaxed">
+                    I design practical business systems that connect lead capture, CRM, automation, follow-up, task management, and operational visibility.
+                </p>
 
-      <div class="grid lg:grid-cols-2 gap-6 mt-10">
-        <article class="system-card">
-          <div class="system-img-wrap"><img src="images/sales-pipeline.png" alt="Automated sales pipeline workflow"></div>
-          <div class="system-card-body">
-            <div class="system-meta"><span class="status-dot"></span> Operational System</div>
-            <h3>Automated Sales Pipeline & Client Nurturing</h3>
-            <p>Lead capture triggers alerts, follow-up logic, client communication, and real-time record updates so sales activity does not depend on memory.</p>
-            <div class="tag-row"><span>n8n</span><span>Gmail</span><span>Google Sheets</span><span>Lead Nurturing</span></div>
-          </div>
-        </article>
-
-        <article class="system-card">
-          <div class="system-img-wrap"><img src="images/content-engine.png" alt="AI-powered content workflow"></div>
-          <div class="system-card-body">
-            <div class="system-meta"><span class="status-dot"></span> AI-Assisted Workflow</div>
-            <h3>AI Content Engine & Multi-Channel Distribution</h3>
-            <p>Structured input flows into AI-assisted content generation, routing, logging, and team notifications for faster content operations.</p>
-            <div class="tag-row"><span>n8n</span><span>AI</span><span>Google Sheets</span><span>Telegram</span></div>
-          </div>
-        </article>
-
-        <article class="system-card">
-          <div class="system-img-wrap"><img src="images/Book Funnel Automation.png" alt="Automated book funnel"></div>
-          <div class="system-card-body">
-            <div class="system-meta"><span class="status-dot"></span> Funnel Automation</div>
-            <h3>Digital Product Funnel & Lead Delivery</h3>
-            <p>Lead capture, automated resource delivery, sequence logic, and upsell routing built into one connected workflow.</p>
-            <div class="tag-row"><span>GHL</span><span>Lead Capture</span><span>Email Sequence</span><span>Automation</span></div>
-          </div>
-        </article>
-
-        <article class="system-card featured-case">
-          <div class="system-card-body">
-            <div class="system-meta"><span class="status-dot"></span> Case Study Direction</div>
-            <h3>Dental Clinic Patient Booking System</h3>
-            <p>A GoHighLevel-based booking workflow designed around lead handling, appointment flow, follow-up, and staff visibility.</p>
-            <div class="case-grid">
-              <div><span>Problem</span><strong>Manual patient follow-up</strong></div>
-              <div><span>System</span><strong>GHL booking + automation</strong></div>
-              <div><span>Goal</span><strong>Cleaner handoffs & faster response</strong></div>
+                <div class="flex flex-wrap gap-4 pt-4 hero-actions">
+                    <a href="https://drive.google.com/file/d/1gqECK5fhqOYWvMpLBYFVANAS45i5G06n/view?usp=drivesdk" class="lux-btn" target="_blank" rel="noopener noreferrer">View Case Studies</a>
+                    <a href="https://drive.google.com/file/d/1iumDb805f9tFgMo1TOZdFORvzn7_mAoT/view?usp=drivesdk" class="lux-btn-outline" target="_blank" rel="noopener noreferrer">View Resume</a>
+                    <a href="#contact-form" class="lux-btn-outline">Contact Me</a>
+                </div>
+                <p class="availability">Available for Remote Opportunities</p>
             </div>
-            <a href="https://drive.google.com/file/d/1atalj_F7voqwDvJI0kmxyeN9JbOyYWK-/view?usp=drivesdk" target="_blank" class="text-link">Open SmileCare case study →</a>
-          </div>
-        </article>
-      </div>
+
+            <!-- RIGHT COLUMN: IMAGE -->
+            <div class="relative flex justify-center">
+                <div class="lux-glow"></div>
+                <div class="relative z-10 w-80 h-[460px] overflow-hidden rounded-2xl border border-white/10 shadow-2xl luxe-frame">
+                    <img src="images/profile-pic.jpg" class="w-full h-full object-cover" alt="Cendrick Amorin" width="320" height="460" fetchpriority="high">
+                </div>
+                <div class="lux-orb">
+                    <span class="text-gold text-xl">✦</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <section class="py-24 px-6 bg-[#0d0d0d]">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="lux-section-title">Premium Services</h2>
+
+            <div class="grid md:grid-cols-3 gap-10 pt-12">
+
+                <div class="lux-service-card">
+                    <div class="text-gold text-4xl mb-4">⚡</div>
+                    <h3 class="lux-service-title">CRM &amp; Pipeline Systems</h3>
+                    <p class="lux-service-text">Organize lead stages, follow-up, ownership, and next steps so important inquiries are easier to track.</p>
+                </div>
+
+                <div class="lux-service-card">
+                    <div class="text-gold text-4xl mb-4">🌐</div>
+                    <h3 class="lux-service-title">Automation Workflows</h3>
+                    <p class="lux-service-text">Connect repeatable tasks, notifications, and records using workflows built around clear business rules.</p>
+                </div>
+
+                <div class="lux-service-card">
+                    <div class="text-gold text-4xl mb-4">🎯</div>
+                    <h3 class="lux-service-title">Funnel &amp; Booking Systems</h3>
+                    <p class="lux-service-text">Connect inquiry forms, appointment booking, reminders, and recovery steps in a practical customer journey.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FEATURED CASE STUDY ================= -->
+    <section id="case-studies" class="py-24 px-6 primeflow-section" aria-labelledby="case-study-title">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-intro">
+                <span class="lux-badge">FEATURED CASE STUDY</span>
+                <h2 id="case-study-title" class="lux-section-title">From first inquiry to customer.</h2>
+                <p>A portfolio build connecting the customer journey with the work behind it.</p>
+            </div>
+            <article id="primeflow" class="primeflow-case">
+                <div class="primeflow-heading">
+                    <p class="workflow-badge">Portfolio / Demo Project — QA Tested</p>
+                    <h3>PrimeFlow Home Services <span>— GoHighLevel Lead-to-Customer Automation System</span></h3>
+                    <p>A home-services demo that brings lead capture, CRM stages, booking, follow-up, operational tasks, and dashboard visibility into one connected process.</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1gqECK5fhqOYWvMpLBYFVANAS45i5G06n/view?usp=drivesdk" class="lux-btn mt-6" target="_blank" rel="noopener noreferrer">View Full Case Study</a>
+                <div class="primeflow-stats" aria-label="Project scope">
+                    <div><strong>5</strong><span>funnel pages</span></div>
+                    <div><strong>8</strong><span>CRM pipeline stages</span></div>
+                    <div><strong>7</strong><span>published workflows</span></div>
+                </div>
+                <div class="primeflow-details">
+                    <div><h4>The business problem</h4><p>Inquiries, appointments, follow-up, and service tasks need a clear route from one step to the next.</p></div>
+                    <div><h4>The system</h4><p>A GoHighLevel funnel and booking system connected to an 8-stage pipeline, no-show recovery, Customer Won automation, operational tasks, and dashboard visibility.</p></div>
+                    <div><h4>The purpose</h4><p>Demonstrate how defined stages and automation can support consistent follow-through and clearer operational oversight.</p></div>
+                </div>
+                <ul class="primeflow-features" aria-label="Included system features"><li>Booking system</li><li>No-show recovery</li><li>Customer Won automation</li><li>Operational tasks</li><li>Dashboard visibility</li></ul>
+                <p class="demo-disclaimer">QA/demo data only — not live client performance results.</p>
+                <p class="primeflow-gallery-guide">Selected views of the actual project screens. Click any preview to inspect the full original screenshot.</p>
+                <div class="primeflow-gallery" aria-label="PrimeFlow project screenshots">
+                    <figure class="primeflow-proof primeflow-proof--tall">
+                        <figcaption><span class="slot-number">01 / CUSTOMER JOURNEY</span><h4>Landing page</h4><p>Service information, the request-service entry point, and booking calls to action.</p></figcaption>
+                        <div class="primeflow-proof-preview">
+                            <a href="images/primeflow/landing-page.png" data-proof="images/primeflow/landing-page.png" data-caption="PrimeFlow · Landing page — QA/demo data only" aria-label="Enlarge PrimeFlow Landing page"><img src="images/primeflow/landing-page.png" width="1920" height="5223" loading="lazy" decoding="async" alt="PrimeFlow Landing page. Service information, the request-service entry point, and booking calls to action."></a>
+                        </div>
+                        <div class="primeflow-proof-footer"><span>Cropped preview · QA/demo screenshot</span><a href="images/primeflow/landing-page.png" data-proof="images/primeflow/landing-page.png" data-caption="PrimeFlow · Landing page — QA/demo data only">View full-size image ↗</a></div>
+                    </figure>
+                    <figure class="primeflow-proof primeflow-proof--tall">
+                        <figcaption><span class="slot-number">02 / LEAD CAPTURE</span><h4>Service request form</h4><p>Structured service, property, urgency, and preferred-date fields with consent controls.</p></figcaption>
+                        <div class="primeflow-proof-preview">
+                            <a href="images/primeflow/request-service.png" data-proof="images/primeflow/request-service.png" data-caption="PrimeFlow · Service request form — QA/demo data only" aria-label="Enlarge PrimeFlow Service request form"><img src="images/primeflow/request-service.png" width="1920" height="2334" loading="lazy" decoding="async" alt="PrimeFlow Service request form. Structured service, property, urgency, and preferred-date fields with consent controls."></a>
+                        </div>
+                        <div class="primeflow-proof-footer"><span>Cropped preview · QA/demo screenshot</span><a href="images/primeflow/request-service.png" data-proof="images/primeflow/request-service.png" data-caption="PrimeFlow · Service request form — QA/demo data only">View full-size image ↗</a></div>
+                    </figure>
+                    <figure class="primeflow-proof primeflow-proof--board">
+                        <figcaption><span class="slot-number">03 / CRM PIPELINE</span><h4>Pipeline · lead to appointment</h4><p>The early pipeline stages and an appointment-booked QA opportunity.</p></figcaption>
+                        <div class="primeflow-proof-preview">
+                            <a href="images/primeflow/pipeline-early-stages.png" data-proof="images/primeflow/pipeline-early-stages.png" data-caption="PrimeFlow · Pipeline · lead to appointment — QA/demo data only" aria-label="Enlarge PrimeFlow Pipeline · lead to appointment"><img src="images/primeflow/pipeline-early-stages.png" width="1920" height="931" loading="lazy" decoding="async" alt="PrimeFlow Pipeline · lead to appointment. The early pipeline stages and an appointment-booked QA opportunity."></a>
+                        </div>
+                        <div class="primeflow-proof-footer"><span>Cropped preview · QA/demo screenshot</span><a href="images/primeflow/pipeline-early-stages.png" data-proof="images/primeflow/pipeline-early-stages.png" data-caption="PrimeFlow · Pipeline · lead to appointment — QA/demo data only">View full-size image ↗</a></div>
+                    </figure>
+                    <figure class="primeflow-proof primeflow-proof--board">
+                        <figcaption><span class="slot-number">04 / CRM PIPELINE</span><h4>Pipeline · appointment to nurture</h4><p>Later stages, including Won and Long-Term Nurture, shown with QA records.</p></figcaption>
+                        <div class="primeflow-proof-preview">
+                            <a href="images/primeflow/pipeline-later-stages.png" data-proof="images/primeflow/pipeline-later-stages.png" data-caption="PrimeFlow · Pipeline · appointment to nurture — QA/demo data only" aria-label="Enlarge PrimeFlow Pipeline · appointment to nurture"><img src="images/primeflow/pipeline-later-stages.png" width="1920" height="931" loading="lazy" decoding="async" alt="PrimeFlow Pipeline · appointment to nurture. Later stages, including Won and Long-Term Nurture, shown with QA records."></a>
+                        </div>
+                        <div class="primeflow-proof-footer"><span>Cropped preview · QA/demo screenshot</span><a href="images/primeflow/pipeline-later-stages.png" data-proof="images/primeflow/pipeline-later-stages.png" data-caption="PrimeFlow · Pipeline · appointment to nurture — QA/demo data only">View full-size image ↗</a></div>
+                    </figure>
+                    <figure class="primeflow-proof primeflow-proof--tall">
+                        <figcaption><span class="slot-number">05 / OPERATIONAL VISIBILITY</span><h4>Operations dashboard</h4><p>Opportunity status, stage distribution, lead sources, and operational tasks. All counts and percentages shown are QA/demo data, not client performance.</p></figcaption>
+                        <div class="primeflow-proof-preview">
+                            <a href="images/primeflow/operations-dashboard.png" data-proof="images/primeflow/operations-dashboard.png" data-caption="PrimeFlow · Operations dashboard — QA/demo data only" aria-label="Enlarge PrimeFlow Operations dashboard"><img src="images/primeflow/operations-dashboard.png" width="1920" height="1957" loading="lazy" decoding="async" alt="PrimeFlow Operations dashboard. Opportunity status, stage distribution, lead sources, and operational tasks. All counts and percentages shown are QA/demo data, not client performance."></a>
+                        </div>
+                        <div class="primeflow-proof-footer"><span>Cropped preview · QA/demo screenshot</span><a href="images/primeflow/operations-dashboard.png" data-proof="images/primeflow/operations-dashboard.png" data-caption="PrimeFlow · Operations dashboard — QA/demo data only">View full-size image ↗</a></div>
+                    </figure>
+                    <figure class="primeflow-proof primeflow-proof--wide">
+                        <figcaption><span class="slot-number">06 / AUTOMATION</span><h4>Seven published workflows</h4><p>The captured workflow list covers intake, booking, completion, no-show recovery, estimate follow-up, Customer Won, and long-term nurture.</p></figcaption>
+                        <div class="primeflow-proof-preview">
+                            <a href="images/primeflow/published-workflows.png" data-proof="images/primeflow/published-workflows.png" data-caption="PrimeFlow · Seven published workflows — QA/demo data only" aria-label="Enlarge PrimeFlow Seven published workflows"><img src="images/primeflow/published-workflows.png" width="1920" height="931" loading="lazy" decoding="async" alt="PrimeFlow Seven published workflows. The captured workflow list covers intake, booking, completion, no-show recovery, estimate follow-up, Customer Won, and long-term nurture."></a>
+                        </div>
+                        <div class="primeflow-proof-footer"><span>Cropped preview · QA/demo screenshot</span><a href="images/primeflow/published-workflows.png" data-proof="images/primeflow/published-workflows.png" data-caption="PrimeFlow · Seven published workflows — QA/demo data only">View full-size image ↗</a></div>
+                    </figure>
+                    <figure class="primeflow-proof primeflow-proof--wide">
+                        <figcaption><span class="slot-number">07 / FOLLOW-UP LOGIC</span><h4>No-show recovery workflow</h4><p>The captured builder connects a no-show event to opportunity lookup, tagging, team notification, a rescheduling email, and a follow-up task. This is a workflow structure capture, not an execution-test log.</p></figcaption>
+                        <div class="primeflow-proof-preview">
+                            <a href="images/primeflow/no-show-recovery.png" data-proof="images/primeflow/no-show-recovery.png" data-caption="PrimeFlow · No-show recovery workflow — QA/demo data only" aria-label="Enlarge PrimeFlow No-show recovery workflow"><img src="images/primeflow/no-show-recovery.png" width="1920" height="911" loading="lazy" decoding="async" alt="PrimeFlow No-show recovery workflow. The captured builder connects a no-show event to opportunity lookup, tagging, team notification, a rescheduling email, and a follow-up task. This is a workflow structure capture, not an execution-test log."></a>
+                        </div>
+                        <div class="primeflow-proof-footer"><span>Cropped preview · QA/demo screenshot</span><a href="images/primeflow/no-show-recovery.png" data-proof="images/primeflow/no-show-recovery.png" data-caption="PrimeFlow · No-show recovery workflow — QA/demo data only">View full-size image ↗</a></div>
+                    </figure>
+                </div>
+                <p class="asset-pending">Live demo link to be added. See the full case study above for project context.</p>
+            </article>
+            <div class="related-proof"><span>More project documentation</span><a href="https://drive.google.com/file/d/1eT1Rgk7xD8HYcWeL7dNRc9bZz3kc3o0I/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Business systems case study ↗</a><a href="https://drive.google.com/file/d/1atalj_F7voqwDvJI0kmxyeN9JbOyYWK-/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">SmileCare case study ↗</a></div>
+        </div>
+    </section>
+
+    <!-- ================= AUTOMATION WORKFLOWS ================= -->
+    <section id="workflows" class="workflow-section py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <div class="lux-badge mx-auto mb-6" style="display:inline-block">
+                    ● HANDS-ON AUTOMATION
+                </div>
+                <h2 class="lux-section-title">Automation Workflows</h2>
+                <p class="text-gray-400 max-w-xl mx-auto mt-4">
+                    Hands-on automation systems and portfolio builds demonstrating lead capture, follow-up, AI-assisted workflows, and operational automation.
+                </p>
+            </div>
+
+            <!-- Workflow Cards -->
+            <div class="grid md:grid-cols-2 gap-10">
+
+                <!-- Card 1: Sales Pipeline -->
+                <div class="workflow-card">
+                    <div class="workflow-img-wrap">
+                        <a class="workflow-proof-link" href="images/sales-pipeline.png" data-proof="images/sales-pipeline.png" data-caption="Sales pipeline — original workflow screenshot" aria-label="Enlarge sales pipeline screenshot"><img src="images/sales-pipeline.png" alt="Automated Sales Pipeline & Client Nurturing System" loading="lazy" width="1917" height="916"><span class="enlarge-label">Enlarge workflow ↗</span></a>
+                        <div class="workflow-overlay"></div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="workflow-badge">Workflow build</span>
+                            <span class="text-gold text-sm font-semibold">n8n</span>
+                        </div>
+                        <h3 class="text-white font-bold text-xl leading-tight">
+                            Automated Sales Pipeline<br>& Client Nurturing System
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Demonstrates webhook lead capture, Gmail team alerts, scheduled follow-up, and Google Sheets logging. The workflow connects an incoming inquiry to a recorded next step.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="workflow-tag">Webhook</span>
+                            <span class="workflow-tag">Gmail</span>
+                            <span class="workflow-tag">Smart Wait</span>
+                            <span class="workflow-tag">Google Sheets</span>
+                            <span class="workflow-tag">Lead Nurturing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Content Engine -->
+                <div class="workflow-card">
+                    <div class="workflow-img-wrap">
+                        <a class="workflow-proof-link" href="images/content-engine.png" data-proof="images/content-engine.png" data-caption="Content engine — original workflow screenshot" aria-label="Enlarge content engine screenshot"><img src="images/content-engine.png" alt="AI-Powered Content Engine & Multi-Channel Distribution System" loading="lazy" width="1917" height="916"><span class="enlarge-label">Enlarge workflow ↗</span></a>
+                        <div class="workflow-overlay"></div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="workflow-badge">AI-assisted workflow</span>
+                            <span class="text-gold text-sm font-semibold">n8n + AI</span>
+                        </div>
+                        <h3 class="text-white font-bold text-xl leading-tight">
+                            AI-Powered Content Engine<br>& Multi-Channel Distribution
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Demonstrates structured form input, AI-assisted content generation, Gmail routing, Google Sheets logging, and Telegram notifications. Human review remains part of a practical content process.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="workflow-tag">Groq / Llama 3</span>
+                            <span class="workflow-tag">HTTP Request</span>
+                            <span class="workflow-tag">Google Sheets</span>
+                            <span class="workflow-tag">Telegram</span>
+                            <span class="workflow-tag">Multi-Channel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Book Funnel Automation -->
+                <div class="workflow-card">
+                    <div class="workflow-img-wrap">
+                        <a class="workflow-proof-link" href="images/Book Funnel Automation.png" data-proof="images/Book Funnel Automation.png" data-caption="Digital product funnel — original workflow screenshot" aria-label="Enlarge digital product funnel screenshot"><img src="images/Book Funnel Automation.png" alt="Book Funnel Automation & Lead Capture System" loading="lazy" width="1917" height="916"><span class="enlarge-label">Enlarge workflow ↗</span></a>
+                        <div class="workflow-overlay"></div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="workflow-badge">Funnel automation</span>
+                            <span class="text-gold text-sm font-semibold">n8n + GHL</span>
+                        </div>
+                        <h3 class="text-white font-bold text-xl leading-tight">
+                            Automated Book Funnel<br>& Digital Product Delivery
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Demonstrates lead capture, resource retrieval, automated email delivery, and lead logging. Sequence and upsell steps show how the customer journey can be extended.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="workflow-tag">Lead Capture</span>
+                            <span class="workflow-tag">Email Sequence</span>
+                            <span class="workflow-tag">PDF Delivery</span>
+                            <span class="workflow-tag">Upsell Flow</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: clearly labeled illustrative concept, not execution evidence -->
+                <div id="client-onboarding" class="workflow-card">
+                    <div class="workflow-img-wrap">
+                        <a class="workflow-proof-link" href="images/client-onboarding-concept.svg" data-proof="images/client-onboarding-concept.svg" data-caption="Client onboarding — illustrative demo concept; not a live or tested workflow" aria-label="Enlarge client onboarding demo concept"><img src="images/client-onboarding-concept.svg" alt="Illustrative concept: client form, validation, Google Sheets record, checklist, welcome email and team notification. Not an actual n8n execution screenshot." loading="lazy" width="1440" height="688"><span class="enlarge-label">Enlarge demo concept ↗</span></a>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between"><span class="workflow-badge">Demo concept</span><span class="text-gold text-sm font-semibold">n8n concept</span></div>
+                        <h3 class="text-white font-bold text-xl leading-tight">Client Onboarding<br>&amp; Task Setup</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Illustrates a proposed flow from a new-client form through validation, a Google Sheets record, an onboarding checklist, a welcome email, and a team notification. Incomplete submissions route to review.</p>
+                        <p class="text-gold text-sm leading-relaxed">Demo concept using dummy data — not a live client system or tested deployment.</p>
+                        <div class="flex flex-wrap gap-2 pt-1"><span class="workflow-tag">Form Intake</span><span class="workflow-tag">Validation</span><span class="workflow-tag">Google Sheets</span><span class="workflow-tag">Task Checklist</span><span class="workflow-tag">Email / Alerts</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PORTFOLIO HUB SECTION ================= -->
+    <section class="py-24 px-6 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto text-center">
+
+            <h2 class="lux-section-title mb-4">Featured Portfolio Systems</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Explore portfolio builds focused on practical workflows, clear customer journeys, and day-to-day business operations.
+            </p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 pt-16 portfolio-grid">
+                <a href="#primeflow" class="lux-portfolio-card portfolio-featured group">
+                    <span class="portfolio-label">FEATURED / GOHIGHLEVEL</span>
+                    <h3 class="lux-portfolio-title">GoHighLevel / PrimeFlow</h3>
+                    <p class="lux-portfolio-text">A QA-tested lead-to-customer portfolio and demo system.</p>
+                    <span class="lux-portfolio-arrow" aria-hidden="true">→</span>
+                </a>
+
+                <a href="https://n8n-flydeala.github.io/AI-Portfolio/" target="_blank" rel="noopener noreferrer" class="lux-portfolio-card group">
+                    <h3 class="lux-portfolio-title">AI Automation</h3>
+                    <p class="lux-portfolio-text">Lead handling, notifications, and AI-assisted workflows.</p>
+                    <span class="lux-portfolio-arrow">→</span>
+                </a>
+
+                <a href="https://n8n-flydeala.github.io/ecom-portfolio/" target="_blank" rel="noopener noreferrer" class="lux-portfolio-card group">
+                    <h3 class="lux-portfolio-title">E-Commerce Systems</h3>
+                    <p class="lux-portfolio-text">Order flow, customer journeys, and fulfillment automation.</p>
+                    <span class="lux-portfolio-arrow">→</span>
+                </a>
+
+                <a href="https://n8n-flydeala.github.io/consulting-portfolio/" target="_blank" rel="noopener noreferrer" class="lux-portfolio-card group">
+                    <h3 class="lux-portfolio-title">Consulting Workflows</h3>
+                    <p class="lux-portfolio-text">Operational processes, documentation, and system reviews.</p>
+                    <span class="lux-portfolio-arrow">→</span>
+                </a>
+
+                <a href="https://n8n-flydeala.github.io/realestate-portfolio/" target="_blank" rel="noopener noreferrer" class="lux-portfolio-card group">
+                    <h3 class="lux-portfolio-title">Real Estate Automation</h3>
+                    <p class="lux-portfolio-text">Lead capture, CRM organization, and property workflows.</p>
+                    <span class="lux-portfolio-arrow">→</span>
+                </a>
+
+                <a href="#client-onboarding" class="lux-portfolio-card group">
+                    <span class="portfolio-label">DEMO CONCEPT / N8N</span>
+                    <h3 class="lux-portfolio-title">Client Onboarding &amp; Task Setup</h3>
+                    <p class="lux-portfolio-text">An illustrative intake, validation, and onboarding flow. Dummy data; not a live deployment.</p>
+                    <span class="lux-portfolio-arrow">→</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= HOW I BUILD SYSTEMS ================= -->
+    <section id="process" class="py-24 px-6 process-section" aria-labelledby="process-title">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-intro"><span class="lux-badge">HOW I WORK</span><h2 id="process-title" class="lux-section-title">How I Build Systems</h2><p>Understand the work, define the rules, and build a system people can use.</p></div>
+            <ol class="build-process">
+                <li><span>01</span><h3>Understand Reality</h3><p>Learn how the work happens today.</p></li>
+                <li><span>02</span><h3>Define Outcome</h3><p>Agree on the problem and desired result.</p></li>
+                <li><span>03</span><h3>Capture Requirements</h3><p>Clarify scope, users, and constraints.</p></li>
+                <li><span>04</span><h3>Map Process &amp; Data</h3><p>Define inputs, decisions, and handoffs.</p></li>
+                <li><span>05</span><h3>Design Architecture</h3><p>Choose a maintainable system structure.</p></li>
+                <li><span>06</span><h3>Build</h3><p>Implement the agreed workflow.</p></li>
+                <li><span>07</span><h3>Test</h3><p>Check expected behavior and failure paths.</p></li>
+                <li><span>08</span><h3>Deploy</h3><p>Release only after review and approval.</p></li>
+                <li><span>09</span><h3>Document</h3><p>Make operation and handoff clear.</p></li>
+            </ol>
+            <p class="design-principle"><strong>Design principle:</strong> Accurate <span>→</span> Simple <span>→</span> Fast <span>→</span> Trainable <span>→</span> Scalable</p>
+            <p class="portfolio-document"><a href="https://drive.google.com/file/d/1lhcjDtfbUmvS5fPccGjFqgjj2zdY1QEe/view?usp=drive_link" target="_blank" rel="noopener noreferrer">View portfolio document ↗</a></p>
+        </div>
+    </section>
+
+    <!-- ================= CONTACT FORM ================= -->
+    <section id="contact-form" class="py-24 px-6 bg-[#0a0a0a]">
+        <div class="max-w-3xl mx-auto text-center">
+
+            <div class="lux-badge mx-auto mb-6" style="display:inline-block">
+                ● FLYDEALA ENTERPRISE
+            </div>
+
+            <h2 class="lux-section-title">Work With Me</h2>
+            <p class="text-gray-400 mt-4 mb-12">
+                Tell me about your workflow, the challenge, and what you want to improve.
+            </p>
+
+            <!-- Success State -->
+            <div id="form-success" class="hidden py-16 space-y-4" role="status" tabindex="-1">
+                <div class="text-gold text-5xl mb-4">✦</div>
+                <h3 class="text-2xl font-bold text-white">Message Received!</h3>
+                <p class="text-gray-400">Thank you. I’ll review your project details and get back to you.</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="form-error" role="alert" class="hidden mb-6 p-4 rounded-xl border border-red-500/30 bg-red-500/10 text-red-400 text-sm">
+                Something went wrong. Please try again or reach out directly.
+            </div>
+
+            <!-- Form -->
+            <form id="workWithMeForm" class="space-y-6">
+                <label for="contact-name" class="form-label">Your name</label><input id="contact-name" autocomplete="name" type="text" name="name" placeholder="Your Name" class="lux-input" required>
+                <label for="contact-email" class="form-label">Email address</label><input id="contact-email" autocomplete="email" type="email" name="email" placeholder="Email Address" class="lux-input" required>
+                <label for="contact-message" class="form-label">Project details</label><textarea id="contact-message" name="message" placeholder="Tell me about your project..." rows="5" class="lux-input" required></textarea>
+                <button type="submit" id="submit-btn" class="lux-btn w-full">
+                    <span id="btn-text">Send Message</span>
+                    <span id="btn-loading" class="hidden">Sending...</span>
+                </button>
+            </form>
+            <p class="direct-contact"><a href="mailto:angelcendrickamorin@gmail.com">Email me directly ↗</a><a href="https://wa.me/639691741359" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a></p>
+            <noscript><p>Please use email or WhatsApp to get in touch. The form requires JavaScript.</p></noscript>
+
+        </div>
+    </section>
+
+    </main>
+    <script src="script.js?v=portfolio-v2-20260925-r2" defer></script>
+
+
+
+    <!-- AI CHAT WIDGET -->
+    <div id="chat-container" role="region" aria-label="Cendrick AI chat" class="hidden fixed bottom-24 right-8 w-80 md:w-96 bg-[#111] border border-gold/30 rounded-2xl shadow-2xl z-[60] flex flex-col overflow-hidden">
+        <div class="bg-gold/10 p-4 border-b border-gold/20 flex justify-between items-center">
+            <span class="font-bold text-gold tracking-wide">✦ FLY AI AGENT</span>
+            <button id="close-chat" aria-label="Close AI chat" class="text-gray-400 hover:text-white text-lg leading-none">✕</button>
+        </div>
+        <div id="chat-messages" role="log" aria-live="polite" aria-relevant="additions" class="h-80 overflow-y-auto p-4 space-y-2 text-sm">
+            <div class="bg-gray-800 p-3 mr-auto max-w-[85%] rounded-lg text-gray-200">
+                Hi! I'm Cendrick's AI. How can I help you today?
+            </div>
+        </div>
+        <div class="p-3 border-t border-gold/20 bg-black/50 flex gap-2">
+            <input type="text" id="user-input" aria-label="Message to Cendrick AI" placeholder="Ask anything..."
+                class="flex-1 bg-transparent border border-white/10 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-gold">
+            <button id="send-btn" class="bg-gold hover:bg-darkgold text-black px-4 py-2 rounded-md font-bold text-xs transition">SEND</button>
+        </div>
     </div>
-  </section>
 
-  <section id="process" class="section-wrap">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="section-kicker">HOW I WORK</div>
-      <h2 class="section-title">System design before automation.</h2>
-      <div class="process-line mt-10">
-        <div><span>01</span><h3>Diagnose</h3><p>Understand the business reality, recurring pain points, and current workflow.</p></div>
-        <div><span>02</span><h3>Map</h3><p>Define inputs, decisions, owners, handoffs, outputs, and failure points.</p></div>
-        <div><span>03</span><h3>Build</h3><p>Create the simplest system that solves the real problem without adding daily complexity.</p></div>
-        <div><span>04</span><h3>Validate</h3><p>Test edge cases, usability, data flow, and whether staff can actually operate it.</p></div>
-        <div><span>05</span><h3>Handoff</h3><p>Document the system, clarify controls, and leave a maintainable operating structure.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-wrap section-alt">
-    <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-[.8fr_1.2fr] gap-12">
-      <div>
-        <div class="section-kicker">CAPABILITY STACK</div>
-        <h2 class="section-title text-left">Tools support the system.</h2>
-        <p class="section-lead text-left">I use tools based on what the workflow requires, not because the tool itself is the product.</p>
-      </div>
-      <div class="capability-grid">
-        <div><h3>Systems</h3><p>Process mapping, workflow architecture, SOPs, dashboards, documentation</p></div>
-        <div><h3>Automation</h3><p>n8n, GoHighLevel, Zapier, Make, webhooks, integrations</p></div>
-        <div><h3>AI</h3><p>AI-assisted workflows, structured prompting, content and process support</p></div>
-        <div><h3>Creative Support</h3><p>Canva, content planning, short-form video, ad creative, web presentation</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact-form" class="section-wrap">
-    <div class="max-w-3xl mx-auto px-6">
-      <div class="text-center">
-        <div class="section-kicker">WORK WITH ME</div>
-        <h2 class="section-title">Tell me what is slowing your business down.</h2>
-        <p class="section-lead">If the problem is recurring, manual, messy, or hard to track, I can help map the process and design a cleaner system.</p>
-      </div>
-
-      <div id="form-success" class="hidden form-state">
-        <h3>Message received.</h3>
-        <p>I’ll review your project details and get back to you.</p>
-      </div>
-      <div id="form-error" class="hidden form-error">Something went wrong. Please try again.</div>
-
-      <form id="workWithMeForm" class="contact-form mt-10">
-        <input type="text" name="name" placeholder="Your Name" class="lux-input" required>
-        <input type="email" name="email" placeholder="Email Address" class="lux-input" required>
-        <textarea name="message" placeholder="What process, workflow, or operational problem do you want to improve?" rows="5" class="lux-input" required></textarea>
-        <button type="submit" id="submit-btn" class="primary-btn w-full">
-          <span id="btn-text">Send Project Details</span>
-          <span id="btn-loading" class="hidden">Sending...</span>
+    <div class="chat-launcher fixed bottom-10 right-10 z-50">
+        <button class="lux-float-btn" id="custom-ask-btn" aria-controls="chat-container" aria-expanded="false">
+            ✦ Ask My AI
         </button>
-      </form>
     </div>
-  </section>
-</main>
 
-<div id="chat-container" class="hidden fixed bottom-24 right-8 w-80 md:w-96 bg-[#111] border border-gold/30 rounded-2xl shadow-2xl z-[60] flex flex-col overflow-hidden">
-  <div class="bg-gold/10 p-4 border-b border-gold/20 flex justify-between items-center">
-    <span class="font-bold text-gold tracking-wide">✦ CENDRICK AI</span>
-    <button id="close-chat" class="text-gray-400 hover:text-white text-lg leading-none">✕</button>
-  </div>
-  <div id="chat-messages" class="h-80 overflow-y-auto p-4 space-y-2 text-sm">
-    <div class="bg-gray-800 p-3 mr-auto max-w-[85%] rounded-lg text-gray-200">Hi. Tell me what business process you want to improve.</div>
-  </div>
-  <div class="p-3 border-t border-gold/20 bg-black/50 flex gap-2">
-    <input type="text" id="user-input" placeholder="Ask about systems..." class="flex-1 bg-transparent border border-white/10 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-gold">
-    <button id="send-btn" class="bg-gold hover:bg-darkgold text-black px-4 py-2 rounded-md font-bold text-xs transition">SEND</button>
-  </div>
-</div>
+    <!-- ================= FOOTER ================= -->
+    <footer class="border-t border-white/5 py-12 px-6 bg-[#0a0a0a]">
+        <div class="max-w-6xl mx-auto flex flex-col items-center justify-center gap-6">
 
-<div class="fixed bottom-8 right-8 z-50">
-  <button class="lux-float-btn" id="custom-ask-btn">✦ Ask My AI</button>
-</div>
+            <div class="text-center space-y-1">
+                <p class="text-gold font-bold tracking-widest text-sm">FLYDEALA ENTERPRISE</p>
+                <p class="text-gray-600 text-xs">Automation. Design. Intelligence.</p>
+            </div>
 
-<footer class="border-t border-white/5 py-10 px-6 bg-[#080808]">
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5">
-    <div>
-      <p class="text-gold font-bold tracking-[.2em] text-xs">CENDRICK AMORIN</p>
-      <p class="text-gray-600 text-xs mt-1">AI-Assisted Business Systems Builder</p>
-    </div>
-    <div class="flex items-center gap-5 text-sm text-gray-500">
-      <a href="https://github.com/n8n-flydeala" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/angel-cendrick-amorin-85667a3b9/" target="_blank">LinkedIn</a>
-    </div>
-  </div>
-</footer>
+            <!-- SOCIAL ICONS -->
+            <div class="flex items-center gap-6 py-4">
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/FlyDeala" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gold transition-colors duration-300" aria-label="Facebook">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                <!-- GitHub -->
+                <a href="https://github.com/n8n-flydeala" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gold transition-colors duration-300" aria-label="GitHub">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/angel-cendrick-amorin-85667a3b9/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gold transition-colors duration-300" aria-label="LinkedIn">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@youngisis" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-gold transition-colors duration-300" aria-label="YouTube">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                </a>
+            </div>
 
-<script src="script.js"></script>
+            <div class="text-gray-600 text-xs text-center">
+                &copy; 2026 Cendrick Amorin. All rights reserved.
+            </div>
+
+            <div class="flex items-center gap-2 text-xs text-gray-600">
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-green-500" ></span>
+                Available for Remote Opportunities
+            </div>
+
+        </div>
+    </footer>
+
+    <dialog id="proof-dialog" aria-labelledby="proof-caption"><div class="proof-toolbar"><p id="proof-caption"></p><button id="close-proof" aria-label="Close workflow preview">Close ×</button></div><div class="proof-scroll"><img id="proof-full-image" alt=""></div><p class="proof-note">Original project capture. Status labels in the image are not a live service or performance check.</p><a id="proof-original" target="_blank" rel="noopener noreferrer">Open original image ↗</a></dialog>
 </body>
 </html>

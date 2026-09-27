@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     workForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
+      if (submitBtn.disabled) return;
+
       const formData = new FormData(workForm);
       const payload = {
         name: String(formData.get("name") || "").trim(),
@@ -39,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         workForm.reset();
         workForm.classList.add("hidden");
         successDiv?.classList.remove("hidden");
+        successDiv?.focus();
       } catch (error) {
         console.error("Contact form error:", error);
         errorDiv?.classList.remove("hidden");
@@ -58,25 +61,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatMessages = document.getElementById("chat-messages");
 
   if (askAiBtn && chatContainer) {
-    askAiBtn.addEventListener("click", () => chatContainer.classList.toggle("hidden"));
+    askAiBtn.addEventListener("click", () => {
+      const opening = chatContainer.classList.contains("hidden");
+      chatContainer.classList.toggle("hidden");
+      askAiBtn.setAttribute("aria-expanded", String(opening));
+      if (opening) userInput?.focus();
+    });
   }
   if (closeChat && chatContainer) {
-    closeChat.addEventListener("click", () => chatContainer.classList.add("hidden"));
+    closeChat.addEventListener("click", () => {
+      chatContainer.classList.add("hidden");
+      askAiBtn?.setAttribute("aria-expanded", "false");
+      askAiBtn?.focus();
+    });
+    chatContainer.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeChat.click();
+    });
   }
 
   function addMessage(text, isUser) {
     if (!chatMessages) return;
     const div = document.createElement("div");
     div.className = isUser
-      ? "bg-gold/20 p-3 ml-auto max-w-[85%] rounded-lg text-white text-right"
-      : "bg-gray-800 p-3 mr-auto max-w-[85%] rounded-lg text-gray-200";
+      ? "chat-bubble-user p-3 ml-auto max-w-[85%] rounded-lg text-right"
+      : "chat-bubble-ai p-3 mr-auto max-w-[85%] rounded-lg";
     div.textContent = text;
     chatMessages.appendChild(div);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
   async function sendMessage() {
-    if (!userInput || !sendBtn) return;
+    if (!userInput || !sendBtn || sendBtn.disabled) return;
     const message = userInput.value.trim();
     if (!message) return;
 
@@ -112,5 +127,30 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       sendMessage();
     }
+  });
+
+  // Keep a direct-image link as the no-JavaScript fallback.
+  const proofDialog = document.getElementById("proof-dialog");
+  const proofImage = document.getElementById("proof-full-image");
+  const proofCaption = document.getElementById("proof-caption");
+  const proofOriginal = document.getElementById("proof-original");
+  let proofTrigger = null;
+  document.querySelectorAll("[data-proof]").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      if (!proofDialog?.showModal || !proofImage || !proofCaption || !proofOriginal) return;
+      e.preventDefault();
+      proofTrigger = link;
+      proofImage.src = link.dataset.proof;
+      proofImage.alt = link.dataset.caption;
+      proofCaption.textContent = link.dataset.caption;
+      proofOriginal.href = link.href;
+      document.body.classList.add("proof-open");
+      proofDialog.showModal();
+    });
+  });
+  document.getElementById("close-proof")?.addEventListener("click", () => proofDialog?.close());
+  proofDialog?.addEventListener("close", () => {
+    document.body.classList.remove("proof-open");
+    proofTrigger?.focus();
   });
 });
