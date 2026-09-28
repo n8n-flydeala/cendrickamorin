@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
     <!-- CUSTOM STYLES -->
-    <link rel="stylesheet" href="style.css?v=walkthrough-1">
+    <link rel="stylesheet" href="style.css?v=walkthrough-cover-1">
 
     <!-- TAILWIND EXT -->
     <script>
@@ -174,9 +174,12 @@
                 <p>A guided look at the GoHighLevel funnel, CRM, booking, and automation system.</p>
             </div>
             <div class="walkthrough-player">
-                <iframe src="https://www.youtube-nocookie.com/embed/r0q8nUioCsc?autoplay=0&amp;playsinline=1&amp;rel=0" title="PrimeFlow Home Services — flagship system walkthrough" width="1920" height="1080" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
+                <a id="walkthrough-play" class="walkthrough-cover" href="https://youtu.be/r0q8nUioCsc" target="_blank" rel="noopener noreferrer" aria-label="Play PrimeFlow system walkthrough">
+                    <img src="images/primeflow/walkthrough-cover.jpg" width="1920" height="1080" alt="PrimeFlow system walkthrough cover" loading="lazy">
+                    <span class="walkthrough-play-label">▶ Play walkthrough</span>
+                </a>
             </div>
-            <p class="proof-note">Portfolio / demo project — not live client performance results.</p>
+            <p class="proof-note">Portfolio / demo project — not live client performance results. Cover artwork is illustrative.</p>
             <p class="walkthrough-fallback"><a href="https://youtu.be/r0q8nUioCsc" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></p>
         </div>
     </section>
@@ -595,5 +598,6 @@
     </footer>
 
     <dialog id="proof-dialog" aria-labelledby="proof-caption"><div class="proof-toolbar"><p id="proof-caption"></p><button id="close-proof" aria-label="Close workflow preview">Close ×</button></div><div class="proof-scroll"><img id="proof-full-image" alt=""></div><p class="proof-note">Original project capture. Status labels in the image are not a live service or performance check.</p><a id="proof-original" target="_blank" rel="noopener noreferrer">Open original image ↗</a></dialog>
+    <script src="walkthrough.js?v=1" defer></script>
 </body>
 </html>
