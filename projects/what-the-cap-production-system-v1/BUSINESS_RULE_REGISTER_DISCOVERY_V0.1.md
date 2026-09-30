@@ -163,3 +163,86 @@ The future system should be able to determine:
 ## Change Control
 
 This is a discovery draft only. No provisional rule ID is final. Nothing in this file authorizes implementation. Rules become authoritative only after owner validation, contradiction resolution, and explicit adoption/freeze.
+
+
+## Sales / Reservation — Discovery Update
+
+### WTC-BR-SAL-001 — Sale Establishment
+A transaction becomes a Sale when full payment is received and confirmed. Shipping/fulfillment may occur later.
+
+### WTC-BR-SAL-002 — Reservation State
+Partial payment/downpayment creates RESERVED only. Reserved stock is unavailable to others but not counted as sold.
+
+### WTC-BR-SAL-003 — Reservation Validity and Downpayment
+Minimum downpayment is **₱500**. Standard validity is **72 hours / 3 days**. Downpayment is non-refundable by default. If full payment is not completed by expiry, stock returns to AVAILABLE.
+
+### WTC-BR-SAL-004 — Reservation Extension
+Extension beyond 72 hours requires owner approval and a new explicit expiry date/time.
+
+## Shipping / Fulfillment — Discovery Update
+
+### WTC-BR-SHP-001 — Shipping Status Separation
+SOLD, SHIPPED, and DELIVERED are distinct states.
+
+### WTC-BR-SHP-002 — Standard Fulfillment Lifecycle
+SOLD → PREPARING → SHIPPED → DELIVERED
+
+### WTC-BR-SHP-003 — Shipping Fee Responsibility
+Customer pays shipping by default. Shipping fee is separate from product price.
+
+### WTC-BR-SHP-004 — Re-Delivery / RTS
+Additional re-delivery shipping is customer-paid by default. Eligible membership tiers may receive support subject to program rules.
+
+### WTC-BR-SHP-005 — Customer-Caused Failed Delivery
+Incorrect/incomplete customer-provided address/contact details remain customer responsibility unless owner approves an exception.
+
+## Membership / Loyalty
+
+### WTC-BR-MEM-001 — Tier-Based Benefits
+Membership/reseller benefits should be tier-based. Exact tiers, points, thresholds, limits, redemption, expiry, and economics remain open.
+
+## Auction / Bidding
+
+### WTC-BR-AUC-001 — Auction Is an Allocation / Sales Channel
+Auction uses an AUCTION allocation within the one master inventory truth. Moving stock into Auction is not a Sale.
+
+### WTC-BR-AUC-002 — Simple Controlled Auction V1
+Working flow:
+Auction Listing → Bid → Bid Log → Highest Valid Bid → Winner Confirmation → Payment → SOLD → Fulfillment
+
+### WTC-BR-AUC-003 — Ownership Survives Auction
+Investor/source/batch lineage remains intact in Auction.
+
+Open: starting bid, increment, reserve, close rule/time, payment deadline, unpaid winner, next bidder, bid withdrawal, shipping, investor settlement, condition disclosure.
+
+## Cap Care
+
+### WTC-BR-SVC-002 — Cap Care Service Line
+Cap Care is a dedicated service line including Cap Cleaning, Reblocking, Cleaning + Reblocking, and future adopted services.
+
+Working lifecycle:
+Service Request → Intake → Assessment → Quote → Approval → Service In Progress → Ready → Paid → Returned/Completed
+
+## Storefront / Catalog
+
+### WTC-BR-CAT-001 — Product Categories
+Working storefront categories include Caps, Apparel, Accessories, and Equipment.
+
+### WTC-BR-CAT-002 — Collections Are Merchandising Groups
+Collections are distinct from Category. A product may belong to multiple collections.
+
+## Return Policy Domain
+
+### WTC-BR-POL-001 — Channel-Specific Return Policy
+Return/refund/cancellation policy must eventually distinguish Retail, Wholesale, Auction, Cap Care, and Equipment/Reblocking Machine.
+
+## Architecture Status
+Whimsical architecture phase has started.
+
+Primary board:
+WHATTHECAP PRODUCTION SYSTEM V1 — MASTER ARCHITECTURE
+
+Next detailed board:
+WHATTHECAP — INVENTORY / OWNERSHIP / ALLOCATION FLOW
+
+This does not authorize implementation.
