@@ -200,3 +200,119 @@ A separate working Business Rule Register draft has been created:
 `BUSINESS_RULE_REGISTER_DISCOVERY_V0.1.md`
 
 The IDs and rules in that file are provisional and do not authorize implementation.
+
+
+## Discovery Update — Sales, Shipping, Auction, Loyalty, Cap Care, Whimsical Start — 2026-09-30
+
+**Status:** Working discovery input; not frozen.  
+**Whimsical:** Architecture phase started.  
+**Implementation:** Still not authorized.
+
+### Sale Establishment
+- A transaction becomes a **Sale only when full payment is received and confirmed**.
+- Shipping/fulfillment may occur later.
+- Reservation, downpayment, or partial payment is **not** a Sale.
+
+### Reservation / Downpayment
+- Partial payment creates RESERVED.
+- Minimum downpayment: **₱500**.
+- Standard validity: **72 hours / 3 days**.
+- Downpayment is **non-refundable by default**.
+- Full payment before expiry → SOLD.
+- No full payment by expiry → AVAILABLE.
+- Extension beyond 72 hours requires **owner approval** and a new explicit expiry date/time.
+- Transactions below ₱500 default to full payment unless owner-approved otherwise.
+
+### Shipping / Fulfillment
+- SOLD = full payment confirmed.
+- SHIPPED = handed to courier + waybill/tracking proof sent to customer.
+- DELIVERED = customer actually received the parcel.
+- Standard lifecycle: SOLD → PREPARING → SHIPPED → DELIVERED.
+- Customer pays shipping by default.
+- Shipping is separate from product price.
+- Re-delivery/RTS shipping is customer-paid by default.
+- Eligible membership tiers may receive re-delivery support.
+- Customer-caused failed delivery remains customer responsibility unless owner approves an exception.
+
+### Storefront Expansion
+Working sections now include:
+- Caps
+- Apparel
+- Accessories
+- Collections
+- Wholesale
+- Cap Care
+- Reblocking Machine / Equipment
+- Auction / Bidding
+- Rewards / Club
+- Referral
+- Reseller Membership / Points / Benefits / Perks
+- Gift Cards
+- Policies / Returns
+
+Collections are merchandising groups, not a replacement for product categories.
+
+### Auction / Bidding — Simple V1
+Working flow:
+Inventory → AUCTION Allocation → Listing → Bid Form → Bid Log → Highest Valid Bid → Winner Confirmation → Payment → SOLD → Fulfillment
+
+Auction remains part of the one master inventory truth.
+Moving an item into Auction is not a Sale.
+Investor/source/batch lineage must survive Auction allocation and sale.
+Avoid complex realtime bidding infrastructure in V1 unless later justified.
+
+### Cap Care
+Confirmed as a dedicated service line:
+- Cap Cleaning
+- Reblocking
+- Cleaning + Reblocking
+- future adopted care/restoration services
+
+Working lifecycle:
+Cap Care Page → Service Request → Intake → Assessment → Quote → Approval → Service In Progress → Ready → Paid → Returned/Completed
+
+### Loyalty / Membership
+Treat loyalty as one coordinated layer:
+- Customer Rewards
+- Referral Credits / Points
+- Gift Cards
+- Member Club
+- Reseller Membership
+- Reseller Points
+- Tier-Based Benefits / Perks
+
+Tier-based benefits are the preferred direction. Exact economics remain open.
+
+### Return Policy
+Return/refund/cancellation policy must eventually distinguish:
+- Retail
+- Wholesale
+- Auction
+- Cap Care
+- Equipment / Reblocking Machine
+
+### Whimsical Architecture Phase
+Primary board:
+WHATTHECAP PRODUCTION SYSTEM V1 — MASTER ARCHITECTURE
+
+Next detailed board:
+WHATTHECAP — INVENTORY / OWNERSHIP / ALLOCATION FLOW
+
+### Current Build Order
+1. Finish core business discovery/rules.
+2. Complete Whimsical master architecture and detailed flows.
+3. Define/freeze data authority and OS logical model.
+4. Build WhatTheCap Business OS first.
+5. Build WordPress/WooCommerce.
+6. Build GoHighLevel CRM/pipelines/conversations.
+7. Integrate with n8n/APIs/webhooks.
+8. Add Auction, Rewards, Referral, Reseller Club after core reliability.
+9. Add AI / Voice AI only after backend stability.
+
+### Recovery / Authority Model
+- **Google Drive:** business rules, architecture decisions, SOPs, policies, approvals/change records.
+- **GitHub:** technical source/version history, n8n exports, Apps Script, Docker config, custom WordPress code, integration docs, tests, deployment history.
+- **Business OS:** live operational state.
+- **Runtime:** WordPress/WooCommerce, GHL, n8n, VPS/Docker.
+
+A new builder/session should be able to recover context from Bootstrap + Business Rule Register + Whimsical blueprint + later approved build specifications.
