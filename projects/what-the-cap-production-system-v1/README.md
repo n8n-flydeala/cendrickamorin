@@ -168,3 +168,35 @@ The owner will explain the actual WhatTheCap Business OS and real-world operatin
 ## Change Control
 
 This file is a working bootstrap only. Do not treat assumptions here as final business rules. Architecture becomes authoritative only after discovery, contradiction resolution, Whimsical review, and explicit owner approval.
+
+
+## Discovery Update — Inventory / Channel / Investor Model — 2026-09-30
+
+**Status:** Working discovery input; not frozen.
+
+- Wholesale closing remains intentionally Messenger-led. Automation should capture, qualify, track, follow up, and organize leads without unnecessarily replacing human closing.
+- Retail and Wholesale stock will be physically/operationally separated where useful, but the system should maintain one master inventory truth.
+- Retail and Wholesale are allocations/custody/channel states, not independent inventories.
+- Retail ↔ Wholesale movement is an inventory reallocation, not a Sale.
+- Website availability should reflect Retail Allocation; stock can be reduced, hidden, or shown Out of Stock when moved away from retail without recording a sale.
+- Investor ownership persists across Retail, Wholesale, Reseller-held, Reserved, and other approved states.
+- Investor settlement must remain traceable across channels: sold quantity, payable, remitted, outstanding, and WhatTheCap margin/result.
+- Sale and investor remittance are separate business events.
+- Batch/source lineage is required where ownership or economics differ; product-level counts alone are insufficient.
+- Reseller-held stock remains part of inventory truth; final reseller sale/remittance rules still require discovery.
+- Reblocking Service is a separate service lifecycle.
+- Reblocking Machine may require a separate higher-touch lead/quote/demo/payment/delivery journey.
+
+### Current Conceptual Stock Model
+
+Product / SKU → Batch / Stock Source → Owner → Allocation / Custody → Sale Channel → Sale / Settlement Events
+
+Working allocation states include Retail, Wholesale, Reseller-held, Reserved, Damaged/Unavailable, and other approved states to be confirmed.
+
+### New Discovery Artifact
+
+A separate working Business Rule Register draft has been created:
+
+`BUSINESS_RULE_REGISTER_DISCOVERY_V0.1.md`
+
+The IDs and rules in that file are provisional and do not authorize implementation.
