@@ -339,3 +339,70 @@ A trusted payment-gateway success webhook/event may auto-confirm PAID. Customer 
 
 ### REMAINING OPEN IN THIS DOMAIN
 Chargebacks, tax/accounting treatment, exact WooCommerce payment gateway/provider, exact COD high-risk thresholds, and cash reconciliation cadence remain open.
+
+
+
+## X. INVENTORY / RECEIVING — APPROVED DISCOVERY UPDATE 2026-10-01
+
+
+### WTC-BR-INV-005 — Receiving Verification Before Availability
+Approved rule:
+Stock arrival alone does not make inventory AVAILABLE. Receiving follows EXPECTED → RECEIVED PENDING CHECK → VERIFIED RECEIVED → AVAILABLE / ALLOCATED. Verify actual quantity, condition, supplier/source, economic owner, received by, reference/proof, and batch/source before availability.
+
+
+### WTC-BR-INV-006 — Expected vs Actual Receiving Variance
+Approved rule:
+Actual physical quantity received is the inventory truth. Expected quantity remains recorded for comparison. Any discrepancy becomes RECEIVING VARIANCE / NEEDS ATTENTION; the system must not force actual stock to equal supplier paperwork.
+
+
+### WTC-BR-INV-007 — Persistent Batch / Source Identity
+Approved rule:
+Batch/Source ID survives allocation, custody, reservation, auction, reseller release, return, and recovery movements. Partial allocation splits retain the same batch identity unless there is a genuine change in source, basis, or economic owner.
+
+
+### WTC-BR-INV-008 — Hybrid Batch Consumption
+Approved rule:
+For a Sale, the system proposes the oldest eligible batch/source after SKU, allocation, ownership/source, and other eligibility constraints are satisfied. Authorized users may override the proposed source when the actual physical source differs, but the override must preserve reason and audit history.
+
+
+### WTC-BR-INV-009 — Controlled Inventory Movements
+Approved rule:
+Every material stock movement records From State/Allocation, To State/Allocation, Quantity, Batch/Source, Actor, Timestamp, and Reason/Reference. Reallocation or custody movement is not a Sale. Normal Retail↔Wholesale movements may be performed by authorized staff. Sensitive investor, reseller-custody, damaged/lost, or correction movements require Owner/Admin approval.
+
+
+### WTC-BR-INV-010 — No Silent Quantity Overwrite
+Approved rule:
+Stock corrections and count adjustments must be recorded as traceable adjustment events. Preserve prior state/history, variance, reason, evidence, approver, and resulting balance. Employee may count/report and prepare evidence; Owner/Admin approves quantity-changing corrections in V1.
+
+
+### WTC-BR-INV-011 — Damaged / Lost / Unavailable State
+Approved rule:
+Damaged, lost/missing, or unavailable stock is not automatically a Sale. Preserve batch/source and economic owner. Economic responsibility for the loss is resolved separately by the applicable investor, reseller, supplier, courier, employee, or business rule. Recovery/reclassification creates a new event rather than overwriting the original event.
+
+
+### WTC-BR-INV-012 — Return to Sellable Inventory
+Approved rule:
+Refund or cancellation alone does not restore inventory to AVAILABLE. The physical item must be recovered under WTC control and condition-checked. The outcome is AVAILABLE, NEEDS INSPECTION, DAMAGED, or UNAVAILABLE as applicable.
+
+
+### WTC-BR-INV-013 — Oversell / Last-Unit Conflict
+Approved rule:
+Only approved available allocation may be promised. When two channels compete for the final unit, the first authoritative commitment event wins. The other transaction becomes STOCK CONFLICT / NEEDS ATTENTION. The system must not intentionally create negative sellable inventory to satisfy both.
+
+
+### WTC-BR-INV-014 — Physical Stock Count Variance
+Approved rule:
+Periodic stock count compares Expected System Quantity with Actual Physical Quantity. A variance creates an adjustment case with evidence and approval; it does not directly rewrite inventory.
+
+
+### WTC-BR-INV-015 — Inventory Source of Truth
+Approved rule:
+Business OS remains the authoritative inventory/ownership ledger for V1. WooCommerce may mirror retail availability/order context. GHL and n8n do not own inventory truth.
+
+
+## Y. LOGICAL SALES VIEW DIRECTION — TECHNICAL DESIGN NOTE
+
+
+### WTC-TD-SALES-001 — One Canonical Sales Truth, Multiple Views
+Proposed technical direction, not yet frozen physical schema:
+Retail and Wholesale should not become independent master Sales ledgers. Use one canonical Sales truth with channel/source fields and channel-specific operational views where useful. WooCommerce is a Retail order source/storefront; Business OS remains the authoritative operational Sales/Inventory ledger under the current architecture.
