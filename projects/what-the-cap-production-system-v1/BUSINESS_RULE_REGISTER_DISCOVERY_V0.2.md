@@ -406,3 +406,77 @@ Business OS remains the authoritative inventory/ownership ledger for V1. WooComm
 ### WTC-TD-SALES-001 — One Canonical Sales Truth, Multiple Views
 Proposed technical direction, not yet frozen physical schema:
 Retail and Wholesale should not become independent master Sales ledgers. Use one canonical Sales truth with channel/source fields and channel-specific operational views where useful. WooCommerce is a Retail order source/storefront; Business OS remains the authoritative operational Sales/Inventory ledger under the current architecture.
+
+
+Z. INVESTOR — APPROVED DISCOVERY UPDATE 2026-10-01
+
+WTC-BR-INVEST-001 — Persistent Economic Ownership
+Investor-owned stock remains investor-owned across allocations/custody until a valid Sale, return/pull-out, buyout, or other explicitly approved ownership-changing event.
+
+WTC-BR-INVEST-002 — Multiple Agreement Models
+V1 supports multiple approved investor agreement models per investor/batch, including Fixed Basis, Revenue/Profit Split, Commission/Consignment, and other approved models.
+
+WTC-BR-INVEST-003 — Versioned Investor Terms
+Investor terms are versioned with effective date. Old recognized transactions retain the applicable historical terms; staff may not silently overwrite basis/commission/split terms.
+
+WTC-BR-INVEST-004 — Flexible Settlement Timing
+Settlement timing is configurable per approved investor agreement rather than one global cadence.
+
+WTC-BR-INVEST-005 — Investor Payable Recognition
+Investor payable arises only from an actual recognized Sale of exact investor-owned stock. Allocation, reservation, shipment, reseller release, or Website COD delivery alone does not create investor payable.
+
+WTC-BR-INVEST-006 — Payable and Remittance Separation
+Payable, remittance, and outstanding balance are separate records/states. Partial settlement is allowed and remaining outstanding remains visible until fully resolved.
+
+WTC-BR-INVEST-007 — Pull-out / Return Control
+Unsold investor stock may be requested for pull-out/return and must be physically verified before custody changes. Reserved, committed, sold, or otherwise obligated stock cannot be simply pulled without resolving the obligation.
+
+WTC-BR-INVEST-008 — Damage/Loss Evidence-First
+Damaged/lost investor stock is not automatically a Sale or payable. Record item/batch, custody/location, evidence, and event facts first. Liability follows applicable agreement or Owner/Admin-approved resolution.
+
+WTC-BR-INVEST-009 — Investor Dispute / Adjustment
+Disputed payable is placed UNDER REVIEW. Preserve the original calculation, claim, and evidence. Any approved correction uses a linked adjustment/reversal event; no silent overwrite.
+
+WTC-BR-INVEST-010 — Investor Confidentiality
+Sensitive investor basis, commission, agreement terms, payable, settlement, and financial details are restricted to Owner/Admin or explicitly authorized roles. Future investor read-only statement/dashboard capability is approved; initial V1 direct-access implementation remains to be confirmed during permissions/security closure.
+
+AA. RESELLER — APPROVED DISCOVERY UPDATE 2026-10-01
+
+WTC-BR-RES-001 — Reseller Qualification and Status
+Controlled reseller stock release requires approved reseller status. Lifecycle: APPLICANT → QUALIFIED/APPROVED → ACTIVE → REVIEW/SUSPENDED → INACTIVE. Staff may gather evidence; Owner/Admin approves/suspends unless later delegated.
+
+WTC-BR-RES-002 — Commercial Models
+V1 supports both Upfront Purchase and Consignment/Pay-after-sale per approved reseller agreement.
+
+WTC-BR-RES-003 — Stock Release Is Not Sale
+Consignment stock release moves inventory to RESELLER-HELD custody and preserves SKU, qty, batch/source, owner, release date, and reseller. Release alone is not a Sale.
+
+WTC-BR-RES-004 — Consignment Sale Recognition
+Consignment Sale recognition requires reseller-reported exact SKU/qty validated against reseller-held batch/source allocation. Only then is the Sale recognized and amount due created.
+
+WTC-BR-RES-005 — Amount Due / Remittance Separation
+Recognized Sale → Amount Due → Due Date → Remittance → Outstanding/Overdue. Partial remittance is supported.
+
+WTC-BR-RES-006 — Reseller Pricing/Basis
+Approved reseller-specific pricing, basis, tier, or agreement terms may vary. Resellers cannot self-authorize pricing outside approved terms; discretionary exceptions require Owner/Admin approval.
+
+WTC-BR-RES-007 — Reporting and Remittance Cadence
+Reporting cadence and remittance due rules are configurable per reseller/agreement. Missed reporting or remittance becomes NEEDS ATTENTION/OVERDUE.
+
+WTC-BR-RES-008 — Credit/Exposure and Release Gate
+Each consignment reseller may have an approved exposure/credit limit. New stock release checks active status, exposure, reporting currency, and suspension/default flags. Failed check → RELEASE HOLD / NEEDS APPROVAL.
+
+WTC-BR-RES-009 — Default and Suspension
+Reseller default lifecycle may include CURRENT → OVERDUE → UNDER REVIEW → SUSPENDED/COLLECTION → RESOLVED. Suspension does not erase outstanding obligations or stock accountability. Owner/Admin holds final suspension authority unless later delegated.
+
+WTC-BR-RES-010 — Damage/Loss and Reconciliation
+Damage/loss while in reseller custody is evidence-first and does not automatically become Sale/payment due. Periodic reconciliation compares Released, Sold, Returned, Remaining, Damaged/Lost, and Expected. Unexplained variance becomes RESELLER STOCK VARIANCE.
+
+WTC-BR-RES-011 — Unsold Returns
+Returned reseller stock must be physically received and condition-checked before AVAILABLE. Outcomes may include AVAILABLE, NEEDS INSPECTION, DAMAGED, or UNAVAILABLE.
+
+WTC-BR-RES-012 — Versioned Reseller Terms
+Pricing, basis, credit limit, reporting cadence, remittance terms, and commercial model changes are versioned with effective date. Historical recognized transactions retain the applicable prior terms.
+
+WTC-BR-RES-013 — Reseller Confidentiality
+A reseller may only access their own approved stock/statement/account context. They must not access other reseller data, investor terms, WTC internal margin, or unrelated business financials.
