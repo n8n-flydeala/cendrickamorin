@@ -1,7 +1,7 @@
 # WHATTHECAP — ARCHITECTURE TEXT SNAPSHOT — BOARDS 16-21 — V0.2
 
 Snapshot date: 2026-10-01
-Recovery text export after Sales/Payment/COD decision closure. Whimsical remains the live visual source.
+Recovery text export after Sales/Payment/COD decision closure and V0.2 cross-board QA checkpoint. Whimsical remains the live visual source.
 
 ## 16 — BUSINESS OS LOGICAL DATA MAP
 Whimsical: https://whimsical.com/UKftdakGpVVheNiWLySr4V
