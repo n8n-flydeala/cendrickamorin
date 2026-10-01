@@ -26,3 +26,23 @@ negative-stock block / derived-stock reconciliation evidence remains pending.
 Latest accepted baseline: V1.0.
 WIP checkpoint: V1.1-WIP.
 Package 4: NOT AUTHORIZED.
+
+
+SOURCE PREPARATION UPDATE — 2026-10-01
+Package 3 WIP source prepared under:
+projects/what-the-cap-production-system-v1/apps-script/package-3-wip/
+
+Modules prepared:
+01_IdService.gs
+02_ValidationService.gs
+03_EventService.gs
+04_ExceptionService.gs
+06_InventoryService.gs
+20_ReconciliationService.gs
+24_AuditGuard.gs
+
+Pure logic QA PASS:
+receive 10 -> commit 4 -> release -> consume 3 -> transfer 2 -> over-consume blocked.
+
+This is not live Apps Script acceptance evidence.
+Package 3 remains BLOCKED / NOT ACCEPTED pending privileged Business-owned Apps Script deployment and live exit testing.
