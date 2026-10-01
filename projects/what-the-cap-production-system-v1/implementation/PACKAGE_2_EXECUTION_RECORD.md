@@ -10,3 +10,16 @@ Executed: normalized REF_CONFIG; frozen headers for T_PARTIES, T_PARTY_ROLES, T_
 Excluded: migration/business transaction data; Apps Script posting engine; WooCommerce/GHL/n8n; staff sharing; production cutover; legacy mutation; Private economics mutation/exposure.
 Checkpoint: V1.0 — PACKAGE 2 ACCEPTED — VERIFIED
 Next package: PACKAGE 3 — NOT AUTHORIZED
+
+
+QA CORRECTION
+Classification: IMPLEMENTATION DEFECT — validation side-effect
+Initial checkbox-style BOOLEAN validation auto-populated blank rows with FALSE in T_LOCATIONS and REF_CONFIG.
+Controlled resolution:
+• switched to blank-safe CUSTOM_FORMULA boolean validation;
+• cleared only unintended blank-row FALSE values;
+• applied the same correction to the V1.0 Operations checkpoint;
+• re-read live and checkpoint cells to verify blank rows contain validation metadata without entered FALSE values.
+Business rules changed: NONE
+Architecture changed: NONE
+Package scope changed: NONE
