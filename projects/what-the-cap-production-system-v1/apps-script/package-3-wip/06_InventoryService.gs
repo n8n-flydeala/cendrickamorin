@@ -1,7 +1,7 @@
 var WTC = WTC || {};
 WTC.InventoryService = (function () {
   function movementEffect(row, locationId) {
-    var qty = Number(row.QTY || 0);
+    var qty = WTC.ValidationService.positiveQty('QTY', row.QTY);
     switch (row.MOVEMENT_TYPE) {
       case 'RECEIVE':
       case 'RETURN':
@@ -13,9 +13,8 @@ WTC.InventoryService = (function () {
         return (row.TO_LOCATION_ID === locationId ? qty : 0) -
                (row.FROM_LOCATION_ID === locationId ? qty : 0);
       case 'ADJUST':
-        if (row.TO_LOCATION_ID === locationId && !row.FROM_LOCATION_ID) return qty;
-        if (row.FROM_LOCATION_ID === locationId && !row.TO_LOCATION_ID) return -qty;
-        throw new Error('ADJUST_REQUIRES_EXACT_DIRECTION');
+        if (!!row.TO_LOCATION_ID === !!row.FROM_LOCATION_ID) throw new Error('ADJUST_REQUIRES_EXACT_DIRECTION');
+        return row.TO_LOCATION_ID === locationId ? qty : (row.FROM_LOCATION_ID === locationId ? -qty : 0);
       case 'COMMIT':
       case 'RELEASE':
         return 0;
@@ -31,16 +30,15 @@ WTC.InventoryService = (function () {
   }
 
   function activeCommitted(args) {
-    var asOf = args.asOf || new Date();
     return args.commitments
       .filter(function (r) {
         return r.BATCH_ID === args.batchId &&
                r.SKU_ID === args.skuId &&
                r.LOCATION_ID === args.locationId &&
-               String(r.STATUS || '').toUpperCase() === 'ACTIVE' &&
-               (!r.EXPIRES_AT || new Date(r.EXPIRES_AT) > asOf);
+               String(r.STATUS || '').toUpperCase() === 'ACTIVE';
       })
-      .reduce(function (sum, r) { return sum + Number(r.QTY || 0); }, 0);
+      // An expired ACTIVE hold remains counted until a controlled release records history.
+      .reduce(function (sum, r) { return sum + WTC.ValidationService.positiveQty('QTY', r.QTY); }, 0);
   }
 
   function availableToSell(args) {
@@ -87,7 +85,7 @@ WTC.InventoryService = (function () {
     WTC.ValidationService.requireValue('LOCATION_ID', input.LOCATION_ID);
     WTC.ValidationService.positiveQty('QTY', input.QTY);
     var row = Object.assign({}, input);
-    row.COMMITMENT_ID = row.COMMITMENT_ID || WTC.IdService.canonical('CMT');
+    row.COMMITMENT_ID = row.COMMITMENT_ID || WTC.IdService.canonical('COM');
     row.QTY = Number(row.QTY);
     row.START_AT = row.START_AT || new Date();
     row.STATUS = row.STATUS || 'ACTIVE';

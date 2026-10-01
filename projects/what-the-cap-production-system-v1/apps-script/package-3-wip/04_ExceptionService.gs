@@ -8,10 +8,15 @@ WTC.ExceptionService = (function () {
       RELATED_ENTITY_ID: args.entityId || '',
       SEVERITY: args.severity || 'ERROR',
       DETECTED_AT: new Date(),
+      DETECTED_BY: args.actorId || '',
       OWNER_PARTY_ID: args.ownerPartyId || '',
       NOTES: args.notes || '',
       STATUS: 'OPEN',
-      RESOLUTION_AT: ''
+      RESOLUTION_CODE: '',
+      RESOLUTION_AT: '',
+      EVIDENCE_GROUP_ID: args.evidenceGroupId || '',
+      CREATED_AT: new Date(),
+      UPDATED_AT: new Date()
     };
   }
   return { buildException: buildException };

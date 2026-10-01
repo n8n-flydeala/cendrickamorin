@@ -1,10 +1,12 @@
 var WTC = WTC || {};
 WTC.ValidationService = (function () {
   function requireValue(name, value) {
-    if (value === '' || value === null || value === undefined) throw new Error('REQUIRED:' + name);
+    if (value === null || value === undefined || (typeof value === 'string' && !value.trim())) throw new Error('REQUIRED:' + name);
     return value;
   }
   function positiveQty(name, value) {
+    if (typeof value !== 'number' && typeof value !== 'string') throw new Error('INVALID_POSITIVE_QTY:' + name);
+    if (typeof value === 'string' && !value.trim()) throw new Error('INVALID_POSITIVE_QTY:' + name);
     var n = Number(value);
     if (!isFinite(n) || n <= 0) throw new Error('INVALID_POSITIVE_QTY:' + name);
     return n;

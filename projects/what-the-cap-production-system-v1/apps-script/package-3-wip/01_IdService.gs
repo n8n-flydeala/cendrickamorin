@@ -17,7 +17,15 @@ WTC.IdService = (function () {
   function ulid() { return encodeTime(Date.now(), 10) + randomPart(16); }
   function canonical(prefix) {
     if (!prefix || !/^[A-Z0-9_]+$/.test(prefix)) throw new Error('INVALID_ID_PREFIX');
-    return prefix + '_' + ulid();
+    return prefix + '-' + ulid();
   }
-  return { canonical: canonical, ulid: ulid };
+  function unique(prefix, exists) {
+    if (typeof exists !== 'function') throw new Error('ID_LOOKUP_REQUIRED');
+    for (var attempt = 0; attempt < 3; attempt++) {
+      var id = canonical(prefix);
+      if (!exists(id)) return id;
+    }
+    throw new Error('ID_COLLISION_LIMIT');
+  }
+  return { canonical: canonical, ulid: ulid, unique: unique };
 }());

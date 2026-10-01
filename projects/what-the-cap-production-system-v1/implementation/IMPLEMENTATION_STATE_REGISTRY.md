@@ -8,7 +8,7 @@ Package 0: PASS
 Package 1: PASS
 Package 2: PASS
 Package 3: AUTHORIZED / BLOCKED
-Blocker: privileged Google Apps Script execution/deployment capability unavailable
+Blocker: GIS web caller configuration/approved role mapping and posting integration incomplete; live audit tables lack headers
 Package 4 — ORDER / SALE / PAYMENT / FULFILLMENT: NOT AUTHORIZED
 
 AUTHORITY
@@ -27,7 +27,7 @@ Operations Workbook ID: 1JNxH585ajPAOoWQpexKSF_cIpiutOdk8cAJ1Fwf8CBM
 Operations State: PACKAGE_3_INVENTORY_STRUCTURE_READY / POSTING TEST NOT EXECUTED
 Private Workbook ID: 1J53dbBdUte1_DBeeHcS0p16zh96EJXElGZxw1s4pnDU
 Private State: SHELL_CREATED_OWNER_ONLY / UNCHANGED
-Standalone Apps Script Project ID: PENDING — BLOCKED BY CURRENT EXECUTION CAPABILITY
+Standalone Apps Script Project ID: 1jAl9sLlPQZsCzAHsn3xI9-NIWrRNtUx8VtFBxwuHtNl7zcn0JqsW765v — BUSINESS DEV / SOURCE UPLOADED / NO WEB-APP DEPLOYMENT
 Migration Staging Workbook ID: PENDING authorized package
 
 PACKAGE 3 STRUCTURAL STATE
@@ -85,3 +85,16 @@ receive 10 -> commit 4 -> release -> consume 3 -> transfer 2 -> over-consume blo
 
 This is not live Apps Script acceptance evidence.
 Package 3 remains BLOCKED / NOT ACCEPTED pending privileged Business-owned Apps Script deployment and live exit testing.
+
+AUTHORIZED RESUME UPDATE — 2026-10-01 (supersedes earlier capability blocker)
+Separate checkout on what-the-cap-v1-dev from 610c5e31907468ce12b18bfff7db16b2f4328f0f.
+Business-owned standalone DEV project created and numbered WIP source uploaded.
+Pure Apps Script runtime smoke: PASS. Local source tests: 24 PASS.
+No live inventory records were posted. No web app was deployed.
+Existing Business Cloud project has two Desktop OAuth clients; no approved GIS
+Web-client/caller-role configuration has been verified for Package 3.
+Live T_EVENTS and T_EXCEPTIONS header rows are blank. Guarded DEV setup source is
+prepared; actual spreadsheet grant/setup must be verified before audit persistence.
+Source remains integration-incomplete WIP, not deploy-ready or accepted.
+Detailed execution record: implementation/PACKAGE_3_RESUME_2026-10-01.md.
+V1.0 remains latest accepted baseline; Package 4 remains NOT AUTHORIZED.

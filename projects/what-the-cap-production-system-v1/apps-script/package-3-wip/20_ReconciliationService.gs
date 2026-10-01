@@ -1,6 +1,7 @@
 var WTC = WTC || {};
 WTC.ReconciliationService = (function () {
   function inventoryCheck(args) {
+    if (typeof args.expectedOnHand !== 'number' || !Number.isFinite(args.expectedOnHand)) throw new Error('INVALID_RECONCILIATION_EXPECTATION');
     var actual = WTC.InventoryService.onHand({
       batchId: args.batchId,
       skuId: args.skuId,

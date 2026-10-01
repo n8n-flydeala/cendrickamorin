@@ -4,7 +4,7 @@ WTC.AuditGuard = (function () {
     immutableFields.forEach(function (field) {
       var before = originalRow ? originalRow[field] : undefined;
       var after = proposedRow ? proposedRow[field] : undefined;
-      if (before !== undefined && before !== '' && before !== after) {
+      if (originalRow && before !== after) {
         throw new Error('POSTED_FIELD_IMMUTABLE:' + field);
       }
     });
