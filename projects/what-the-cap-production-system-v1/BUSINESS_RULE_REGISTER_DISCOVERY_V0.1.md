@@ -168,7 +168,7 @@ This is a discovery draft only. No provisional rule ID is final. Nothing in this
 ## Sales / Reservation — Discovery Update
 
 ### WTC-BR-SAL-001 — Sale Establishment
-A transaction becomes a Sale when full payment is received and confirmed. Shipping/fulfillment may occur later.
+For prepaid transactions, a Sale is established when full payment is actually received and verified. Website COD is an approved exception: it becomes SOLD/PAID only when courier COD remittance/payment is confirmed. Shipping/fulfillment may occur earlier for COD.
 
 ### WTC-BR-SAL-002 — Reservation State
 Partial payment/downpayment creates RESERVED only. Reserved stock is unavailable to others but not counted as sold.
@@ -246,3 +246,96 @@ Next detailed board:
 WHATTHECAP — INVENTORY / OWNERSHIP / ALLOCATION FLOW
 
 This does not authorize implementation.
+
+
+
+## W. SALES / PAYMENT / WEBSITE COD — APPROVED DISCOVERY UPDATE 2026-10-01
+
+
+### WTC-BR-COD-001 — Channel-Specific COD
+Approved rule:
+Website Retail may use COD. Retail closed through Messenger/Instagram is Payment First. Wholesale closed through Messenger is Payment First under the current V1 direction.
+
+
+### WTC-BR-COD-002 — COD Confirmation and Stock Commitment
+Approved rule:
+A WooCommerce COD checkout does not by itself lock stock. COD stock becomes COMMITTED and unavailable to other buyers only after automated confirmation/risk screening and any required manual review. A confirmed COD order is not yet a Sale.
+
+
+### WTC-BR-COD-003 — Hybrid COD Confirmation / Risk Review
+Approved rule:
+Use automated confirmation first. Flagged/suspicious orders route to manual review; a risk flag is not an automatic rejection. Initial risk flags include invalid/incomplete contact details, ambiguous address, repeated customer-caused COD/RTS history, unusually high value/quantity, duplicate/repeated orders in a short period, failed automated confirmation, and owner/staff manual flag. Exact thresholds remain open.
+
+
+### WTC-BR-COD-004 — COD Fulfillment / Cancellation
+Approved rule:
+Confirmed COD stock enters PREPARING with a target of shipment within 1–2 business days. Missing the target creates a Needs Attention exception, not automatic cancellation. Customer cancellation before SHIPPED may release committed stock back to AVAILABLE. After SHIPPED, refusal/cancellation is treated as failed delivery/RTS.
+
+
+### WTC-BR-COD-005 — COD Sale Establishment / Remittance
+Approved rule:
+Website COD does not become financially SOLD/PAID when ordered, shipped, or merely delivered. The sequence is DELIVERED → COD PENDING REMITTANCE → COD REMITTANCE RECEIVED/CONFIRMED → SOLD/PAID. Product amount and shipping fee are collected by the courier. No extra COD handling/service fee in V1.
+
+
+### WTC-BR-COD-006 — COD Failure Responsibility / Eligibility
+Approved rule:
+Customer-caused failed delivery/RTS makes the customer responsible for re-delivery shipping and records a customer failure event. Carrier/WhatTheCap-caused failure does not charge the customer for re-delivery and does not count against customer COD eligibility. Two customer-caused failed COD/RTS incidents disable COD for that customer; reactivation requires Owner/Admin review and approval.
+
+
+### WTC-BR-PAY-001 — Current Manual Payment Methods
+Confirmed current methods:
+GCash, bank transfer including GoTyme, and cash for in-person transactions. Future WooCommerce online gateway/provider remains TO CONFIRM.
+
+
+### WTC-BR-PAY-002 — Payment Proof Is Not Payment Confirmation
+Approved rule:
+A screenshot or reference number may be collected as evidence but does not establish PAID. For GCash/bank/GoTyme, actual receipt must be verified before PAID/SOLD. Employee may collect/encode proof and mark for verification; Owner/Admin currently has final manual payment-verification authority.
+
+
+### WTC-BR-PAY-003 — Cash In Person
+Approved rule:
+Actual cash physically received by an authorized person is immediately PAYMENT VERIFIED / PAID, with receipt/transaction reference recorded.
+
+
+### WTC-BR-PAY-004 — Underpayment / Overpayment
+Approved rule:
+Underpayment is recorded at the actual amount received with PARTIAL / BALANCE DUE and is not SOLD unless it is a valid reservation/downpayment case. If required total is fully covered by an overpayment, the order may be PAID, but the excess must be tracked separately as refund due, customer credit, or another owner-approved application and must never be treated as extra sales revenue.
+
+
+### WTC-BR-PAY-005 — Payment Destination Tracking
+Approved rule:
+Every payment records Payment Method and Receiving Account/Destination separately, plus amount received, actual payment timestamp, verification status, verified by, and reference/receipt.
+
+
+### WTC-BR-RES-005 — Verified Reservation Start / Payment Timestamp
+Approved rule:
+The 72-hour reservation clock starts only when the downpayment is actually verified received. If the remaining balance was actually transferred before expiry and a reliable transaction timestamp proves it, the payment counts as on time even if owner verification occurs later. A balance paid after actual expiry does not automatically revive the old reservation; Owner reviews current stock and may honor, create a new reservation, refund, or create approved customer credit.
+
+
+### WTC-BR-REF-001 — Refund Authorization / Routing
+Approved rule:
+Only Owner/Admin may approve and finalize refunds. Employee may collect/encode request and evidence. Refund normally returns through the original payment method where practical; an alternate method requires Owner approval and recorded reason. Refund records retain original transaction link, reason, amount, approver, method, timestamp, and reference.
+
+
+### WTC-BR-REF-002 — Full / Partial Refund and History
+Approved rule:
+System supports FULL REFUND and PARTIAL REFUND. Total refund may not exceed verified amount actually received unless a separate approved compensation/credit event exists. Full refund before fulfillment completion may result in REFUNDED/CANCELLED as applicable. Partial refund leaves the Sale intact with PARTIALLY REFUNDED financial status. Original Sale history is preserved.
+
+
+### WTC-BR-DSC-001 — Discount / Promo Authority
+Approved rule:
+Owner/Admin controls discretionary/manual discounts. Employees may encode/apply only pre-approved or system-defined discounts. A preconfigured active website promo code may be system-approved automatically.
+
+
+### WTC-BR-DSC-002 — Discount Recording
+Approved rule:
+Preserve base/original selling price, discount type, discount amount, reason/promo code, approver when manual, and final selling price/net sales amount.
+
+
+### WTC-BR-GTW-001 — Future Online Gateway Authority
+Approved architecture rule:
+A trusted payment-gateway success webhook/event may auto-confirm PAID. Customer screenshots cannot override authoritative gateway status.
+
+
+### REMAINING OPEN IN THIS DOMAIN
+Chargebacks, tax/accounting treatment, exact WooCommerce payment gateway/provider, exact COD high-risk thresholds, and cash reconciliation cadence remain open.
