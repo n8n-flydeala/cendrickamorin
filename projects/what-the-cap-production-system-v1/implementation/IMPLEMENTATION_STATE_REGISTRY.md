@@ -98,3 +98,16 @@ prepared; actual spreadsheet grant/setup must be verified before audit persisten
 Source remains integration-incomplete WIP, not deploy-ready or accepted.
 Detailed execution record: implementation/PACKAGE_3_RESUME_2026-10-01.md.
 V1.0 remains latest accepted baseline; Package 4 remains NOT AUTHORIZED.
+
+DEV AUDIT SETUP UPDATE — 2026-10-02 (supersedes earlier blank-header blocker)
+Owner-reviewed permission grant was followed by successful Business Apps Script
+package3DevAuditSetup execution, completed 12:52:10 Asia/Manila.
+Independent read-only verification confirms frozen T_EVENTS (14 fields) and
+T_EXCEPTIONS (15 fields) headers and one frozen header row on each.
+No primary IDs in A2:A1000 of the six Package 3 tables or either audit table.
+No live inventory posting, public deployment, or actual caller-security test.
+Approved GIS Web client and real role mapping remain unverified; server-side
+integration and required live exit tests are still incomplete.
+Package 3 remains PARTIAL / LIVE POSTING BLOCKED / NOT ACCEPTED.
+Evidence: implementation/PACKAGE_3_DEV_AUDIT_SETUP_2026-10-02.md.
+V1.0 remains latest accepted baseline; Package 4 remains NOT AUTHORIZED.
