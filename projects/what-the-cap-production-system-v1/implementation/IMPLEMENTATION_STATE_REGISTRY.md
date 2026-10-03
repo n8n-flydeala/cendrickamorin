@@ -8,7 +8,7 @@ Package 0: PASS
 Package 1: PASS
 Package 2: PASS
 Package 3: AUTHORIZED / BLOCKED
-Blocker: GIS Web client/verified Owner subject, approved policy/reference prerequisites and required live tests remain incomplete. Audit headers are verified; posting disabled.
+Blocker: GIS Web client verified/configured, but Google rejects the HtmlService frame origin. Approved sign-in-host/transport resolution, verified Owner subject, policy/reference prerequisites and live tests remain incomplete. Audit headers verified; posting disabled.
 Package 4 — ORDER / SALE / PAYMENT / FULFILLMENT: NOT AUTHORIZED
 
 AUTHORITY
@@ -124,3 +124,13 @@ Detailed 16-part evidence: implementation/PACKAGE_3_EXECUTION_RESULT_2026-10-03.
 Git registry updated; external Drive/Whimsical mirrors were not modified and may
 still show older implementation state. Frozen specifications remain authoritative.
 Package 3 PARTIAL / NOT ACCEPTED. V1.0 accepted baseline unchanged. No Package 4.
+
+GIS WEB CLIENT UPDATE — 2026-10-03
+Verified separate Web application client; public ID configured in protected DEV
+Script Properties. No secrets copied. Private Owner-only DEV web-app version 1
+created to inspect sign-in hosting; not Production. Google rejected the actual
+googleusercontent.com frame origin: Invalid Origin: uses a forbidden domain.
+No origin persisted. DEV_WEB_ENABLED reverted false and denial verified by reload.
+POSTING_ENABLED remains false. No Owner subject binding or live inventory posting.
+Only affected authentication/posting path stopped for approved design resolution.
+Evidence: implementation/PACKAGE_3_GIS_ORIGIN_BLOCKER_2026-10-03.md.

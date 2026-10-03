@@ -7,7 +7,7 @@ Required before Package 3 acceptance (live verification status, reconciled 2026-
 - [x] Record Script Project ID in controlled implementation registry (not staff-visible secret cells).
 - [x] Verify frozen audit headers and all eight Package 3 schemas through Owner-session read-only preflight.
 - [x] Upload and reread guarded DEV integration source; run local tests (34 PASS) and Apps Script pure smoke.
-- [ ] Create/verify a separate GIS Web application client; Desktop clients are not substitutes.
+- [x] Verify a separate GIS Web application client and protected public ID configuration; Desktop clients are not substitutes.
 - [ ] Verify exact DEV iframe origin before allowing it; no guessed/wildcard origins.
 - [ ] Implement verified Google caller identity.
 - [ ] Implement protected server-side role registry.
@@ -28,9 +28,12 @@ console exist; there is no deployed public inventory endpoint. Posting is disabl
 An implemented source module is not proof of its live security or persistence path.
 
 Read-only preflight: zero inventory/audit records; zero SKU/location/party masters;
-GIS, role registry and approved policy absent. Web-client creation form has been
-prepared under Business Cloud project `wtc-as-bridge-qual-202609`, with no origins
-or redirects. It has not been submitted pending action-time browser confirmation.
+GIS Web client now verified/configured; role registry and approved policy absent.
+Private Owner-only DEV web-app version 1 created to inspect hosting. Google rejected
+its actual googleusercontent.com origin as forbidden; no origin or redirect saved.
+Identity screen disabled again; inventory posting remains disabled. See
+`../../implementation/PACKAGE_3_GIS_ORIGIN_BLOCKER_2026-10-03.md` for exact evidence
+and the required approved sign-in-host/transport resolution.
 
 Before enabling posting, resolve approved master/status/enum values, receipt
 sequence initialization, approval dependencies and protected policy; prove DEV
