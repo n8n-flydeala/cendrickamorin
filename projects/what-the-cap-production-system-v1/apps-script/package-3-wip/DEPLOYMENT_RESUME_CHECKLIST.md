@@ -2,9 +2,13 @@
 
 Do not deploy until a legitimate WHATTHECAP Business-owned Google Apps Script execution path is available.
 
-Required before Package 3 acceptance:
-- [ ] Create/verify standalone privileged Apps Script project.
-- [ ] Record Script Project ID in controlled implementation registry (not staff-visible secret cells).
+Required before Package 3 acceptance (live verification status, reconciled 2026-10-03):
+- [x] Create/verify standalone privileged Business-owned Apps Script DEV project.
+- [x] Record Script Project ID in controlled implementation registry (not staff-visible secret cells).
+- [x] Verify frozen audit headers and all eight Package 3 schemas through Owner-session read-only preflight.
+- [x] Upload and reread guarded DEV integration source; run local tests (34 PASS) and Apps Script pure smoke.
+- [ ] Create/verify a separate GIS Web application client; Desktop clients are not substitutes.
+- [ ] Verify exact DEV iframe origin before allowing it; no guessed/wildcard origins.
 - [ ] Implement verified Google caller identity.
 - [ ] Implement protected server-side role registry.
 - [ ] Deny by default when identity cannot be verified.
@@ -19,4 +23,20 @@ Required before Package 3 acceptance:
 - [ ] Verify no direct sheet posting bypass.
 - [ ] Create accepted Package 3 checkpoint only after all exit evidence passes.
 
-Current source is WIP and intentionally has no privileged external entrypoint enabled.
+Current source is WIP. Guarded caller handlers and a disabled DEV-only identity
+console exist; there is no deployed public inventory endpoint. Posting is disabled.
+An implemented source module is not proof of its live security or persistence path.
+
+Read-only preflight: zero inventory/audit records; zero SKU/location/party masters;
+GIS, role registry and approved policy absent. Web-client creation form has been
+prepared under Business Cloud project `wtc-as-bridge-qual-202609`, with no origins
+or redirects. It has not been submitted pending action-time browser confirmation.
+
+Before enabling posting, resolve approved master/status/enum values, receipt
+sequence initialization, approval dependencies and protected policy; prove DEV
+fixture isolation, real GIS transport/nonce/Owner subject, audit writes and rereads.
+Never activate TO_CONFIRM enum values as guessed business truth.
+
+No Operations account is assigned. Only separate Operations identity/role tests
+are blocked by that missing account; other blockers above are independent.
+Detailed evidence: `../../implementation/PACKAGE_3_EXECUTION_RESULT_2026-10-03.md`.
