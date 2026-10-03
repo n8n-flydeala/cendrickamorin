@@ -1,16 +1,20 @@
 var WTC = WTC || {};
 WTC.PostingService = (function () {
-  // All dependencies are server-owned. No public doPost/google.script.run handler is enabled.
+  // All dependencies are server-owned; public handlers must use DevRuntime.
   function execute(request, deps) {
     var actor, locked = false, correlation = WTC.IdService.canonical('COR');
     try {
       if (deps.config.environment !== 'DEV' || deps.config.postingEnabled !== true) throw new Error('POSTING_DISABLED');
+      // Live runtime discards all client-provided trusted flags and validates its
+      // one-use signed-nonce binding before returning an internal request.
+      if(typeof deps.prepareRequest==='function') request=deps.prepareRequest(request);
       actor = WTC.SecurityService.role(WTC.SecurityService.caller(request, deps.config, deps.verifyToken, deps.now()), deps.registry(), deps.now());
       WTC.SecurityService.authorize(actor, request.action, deps.allowlist);
       WTC.ValidationService.requireValue('IDEMPOTENCY_KEY', request.idempotencyKey);
       for (var attempt = 0; attempt < 3 && !locked; attempt++) locked = deps.lock.tryLock(1000);
       if (!locked) throw new Error('LOCK_UNAVAILABLE');
       Object.keys(WTC.Schema).forEach(deps.store.verifySchema);
+      if(typeof deps.verifyPreState==='function') deps.verifyPreState();
       var prior = deps.store.rows('T_EVENTS').filter(function (e) { return e.IDEMPOTENCY_KEY === request.idempotencyKey; });
       if (prior.length) {
         if (prior.length !== 1 || prior[0].ACTOR_ID !== actor.actorId || prior[0].EVENT_TYPE !== request.action || prior[0].PAYLOAD_REF !== deps.fingerprint(request.input)) throw new Error('IDEMPOTENCY_CONFLICT');
@@ -26,11 +30,12 @@ WTC.PostingService = (function () {
       if (!Array.isArray(plan) || !plan.length) throw new Error('EMPTY_WRITE_PLAN');
       event.ENTITY_ID = plan[0].row[WTC.Schema[plan[0].table][0]];
       var ids = deps.store.commit(plan.concat([{ table: 'T_EVENTS', kind: 'insert', row: event }]));
+      if(typeof deps.verifyInventory==='function') deps.verifyInventory();
       return { replay: false, eventId: event.EVENT_ID, ids: ids };
     } catch (err) {
       // Safe code only. Never include request, token, arbitrary exception text or private values.
       var code = /^[A-Z_]+(?::[A-Z_]+)?$/.test(err.message) ? err.message : 'UNCLASSIFIED_FAILURE';
-      if (['WRITE_OUTCOME_UNKNOWN','POST_WRITE_VERIFICATION_FAILED'].indexOf(code) >= 0) deps.freeze(code);
+      if (['WRITE_OUTCOME_UNKNOWN','POST_WRITE_VERIFICATION_FAILED','POST_WRITE_INVENTORY_FAILED'].indexOf(code) >= 0) deps.freeze(code);
       try {
         if (!locked) {
           for (var auditAttempt = 0; auditAttempt < 3 && !locked; auditAttempt++) locked = deps.lock.tryLock(1000);

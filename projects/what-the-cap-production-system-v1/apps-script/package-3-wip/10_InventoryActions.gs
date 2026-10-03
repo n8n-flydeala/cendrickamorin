@@ -103,6 +103,18 @@ WTC.InventoryActions = (function () {
       if (prior.MOVEMENT_TYPE !== 'ADJUST') throw new Error('REVERSAL_TYPE_NOT_IMPLEMENTED');
       return movement(Object.assign({},input,{BATCH_ID:prior.BATCH_ID,SKU_ID:prior.SKU_ID,QTY:prior.QTY,MOVEMENT_TYPE:'ADJUST',FROM_LOCATION_ID:prior.TO_LOCATION_ID,TO_LOCATION_ID:prior.FROM_LOCATION_ID}),actor,store,event,true);
     }
+    function consume(input,actor,store,event){
+      if(!input.COMMITMENT_ID)return movement(Object.assign({},input,{MOVEMENT_TYPE:'CONSUME'}),actor,store,event);
+      var hold=find(store,'T_STOCK_COMMITMENTS',input.COMMITMENT_ID);
+      if(hold.STATUS!=='ACTIVE'||hold.BATCH_ID!==input.BATCH_ID||hold.SKU_ID!==input.SKU_ID||hold.LOCATION_ID!==input.FROM_LOCATION_ID)throw new Error('COMMITMENT_CONSUMPTION_MISMATCH');
+      // Exact full-hold consumption only; partial-release policy is not inferred.
+      if(WTC.ValidationService.positiveQty('QTY',input.QTY)!==WTC.ValidationService.positiveQty('QTY',hold.QTY))throw new Error('PARTIAL_COMMITMENT_CONSUMPTION_NOT_CONFIGURED');
+      WTC.ValidationService.requireValue('RELEASE_REASON',input.RELEASE_REASON);policy.validateEnums(input);
+      var released=WTC.InventoryService.releaseCommitment(hold,policy.now(),input.RELEASE_REASON);
+      var proposedStore={rows:function(table){return table==='T_STOCK_COMMITMENTS'?store.rows(table).map(function(row){return row.COMMITMENT_ID===hold.COMMITMENT_ID?released:row;}):store.rows(table);}};
+      var plan=movement(Object.assign({},input,{MOVEMENT_TYPE:'CONSUME'}),actor,proposedStore,event);
+      return plan.concat([{table:'T_STOCK_COMMITMENTS',kind:'release',row:released}]);
+    }
     function reconcile(input, actor, store, event) {
       if (typeof policy.expectedBalance !== 'function') throw new Error('RECONCILIATION_VIEW_NOT_CONFIGURED');
       var batch = find(store,'T_BATCHES',input.BATCH_ID);
@@ -119,7 +131,7 @@ WTC.InventoryActions = (function () {
       return plan;
     }
     return { RECEIVE:receive, COMMIT:commit, RELEASE:release,
-      CONSUME:function(i,a,s,e){return movement(Object.assign({},i,{MOVEMENT_TYPE:'CONSUME'}),a,s,e);},
+      CONSUME:consume,
       TRANSFER:function(i,a,s,e){return movement(Object.assign({},i,{MOVEMENT_TYPE:'TRANSFER'}),a,s,e);},
       ADJUST:function(i,a,s,e){return movement(Object.assign({},i,{MOVEMENT_TYPE:'ADJUST'}),a,s,e);}, REVERSE_ADJUST:reverse,RECONCILE:reconcile };
   }

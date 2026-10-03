@@ -56,8 +56,9 @@ WTC.SheetsAdapter = (function () {
           rowIndex = next[change.table]++;
         } else if (change.kind === 'release' && change.table === 'T_STOCK_COMMITMENTS') {
           if (prior.length !== 1 || prior[0].STATUS !== 'ACTIVE' || change.row.STATUS !== 'RELEASED') throw new Error('INVALID_RELEASE');
+          function comparable(v){return v instanceof Date?v.toISOString():String(v);}
           headers.filter(function (h) { return ['STATUS','RELEASED_AT','RELEASE_REASON'].indexOf(h) < 0; }).forEach(function (h) {
-            if (String(prior[0][h]) !== String(change.row[h])) throw new Error('IMMUTABLE_COMMITMENT_FIELD:' + h);
+            if (comparable(prior[0][h]) !== comparable(change.row[h])) throw new Error('IMMUTABLE_COMMITMENT_FIELD:' + h);
           });
           rowIndex = prior[0]._row;
         } else throw new Error('POSTED_HISTORY_IMMUTABLE');

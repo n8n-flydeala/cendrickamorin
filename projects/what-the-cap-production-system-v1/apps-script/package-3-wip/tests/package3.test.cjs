@@ -44,6 +44,15 @@ function fixture(store=memory()) {
 function receive(f){f.run('RECEIVE',{SKU_ID:'SKU-TEST',SOURCE_PARTY_ID:'PTY-SOURCE',ECONOMIC_OWNER_ID:'PTY-OWNER',CONDITION_CODE:'TEST',TO_LOCATION_ID:'LOC-A',BUSINESS_REASON_CODE:'TEST_RECEIVE',ACTUAL_QTY:10,EXPECTED_QTY:10,EXPECTED_STATUS:'TEST',RECEIPT_STATUS:'TEST',LINE_STATUS:'TEST',BATCH_STATUS:'TEST'},'receive-one');return f.store.data.T_BATCHES[0].BATCH_ID;}
 function movement(batch,location,qty){return {BATCH_ID:batch,SKU_ID:'SKU-TEST',FROM_LOCATION_ID:location,QTY:qty,BUSINESS_REASON_CODE:'TEST_REASON',SOURCE_ENTITY_TYPE:'DEV_QA',SOURCE_ENTITY_ID:'DEV-QA-ONE'};}
 function args(f,batch,location){return {batchId:batch,skuId:'SKU-TEST',locationId:location,movements:f.store.rows('T_INVENTORY_MOVEMENTS'),commitments:f.store.rows('T_STOCK_COMMITMENTS')};}
+test('exact full commitment consumption plans release plus movement atomically; partial/mismatched hold denied',()=>{
+  const f=fixture(),batch=receive(f);
+  f.run('COMMIT',{BATCH_ID:batch,SKU_ID:'SKU-TEST',LOCATION_ID:'LOC-A',QTY:10,COMMITMENT_TYPE:'TEST',SOURCE_ENTITY_TYPE:'DEV_QA',SOURCE_ENTITY_ID:'DEV-QA-ONE'},'hold-all');
+  const hold=f.store.data.T_STOCK_COMMITMENTS[0],input={...movement(batch,'LOC-A',10),COMMITMENT_ID:hold.COMMITMENT_ID,RELEASE_REASON:'TEST_CONSUMPTION'};
+  assert.throws(()=>f.run('CONSUME',{...input,QTY:5},'partial'),/PARTIAL_COMMITMENT_CONSUMPTION_NOT_CONFIGURED/);
+  assert.throws(()=>f.run('CONSUME',{...input,FROM_LOCATION_ID:'LOC-B'},'mismatch'),/COMMITMENT_CONSUMPTION_MISMATCH/);
+  const writes=f.store.writes;f.run('CONSUME',input,'consume-held');assert.equal(f.store.writes,writes+1);
+  assert.equal(f.store.data.T_STOCK_COMMITMENTS[0].STATUS,'RELEASED');assert.equal(W.InventoryService.onHand(args(f,batch,'LOC-A')),0);assert.equal(W.InventoryService.availableToSell(args(f,batch,'LOC-A')),0);
+});
 test('receive10 / hold4 / release / consume3 / transfer2 / adjust / reverse / rebuild / audit',()=>{
   const f=fixture(),batch=receive(f);
   assert.equal(f.store.data.T_STOCK_RECEIPTS[0].CHECK_STATUS,'VERIFIED');

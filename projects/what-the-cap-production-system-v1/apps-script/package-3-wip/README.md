@@ -22,8 +22,9 @@ This proves the pure calculation guard logic only; it is not an end-to-end Apps 
 
 Business-owned standalone project: `1jAl9sLlPQZsCzAHsn3xI9-NIWrRNtUx8VtFBxwuHtNl7zcn0JqsW765v`.
 Name: WHATTHECAP — Package 3 Inventory Core — DEV.
-The editor contains a concatenation of the numbered `.gs` files. No `doGet`, `doPost`,
-or caller-facing inventory action is enabled. Do not deploy this WIP as a web app.
+The editor contains a concatenation of the numbered `.gs` files. The later
+2026-10-03 update adds guarded handlers and a disabled DEV-only `doGet`; no
+`doPost` exists. Posting remains disabled. Do not deploy this WIP as Production.
 
 Run local tests with `node --test tests/package3.test.cjs` from this directory.
 24 tests PASS. Fixtures are synthetic; no test credential, subject, role code,
@@ -43,6 +44,22 @@ and server-verified CSRF/nonce flow; approved role registry and action mapping;
 approved FK/eligibility/enum/approval adapters; SYS_META sequence adapter;
 runtime freeze/audit-unavailable persistence; actual read-model reconciliation.
 These dependencies are deliberately not replaced by the permissive local fixtures.
+
+## 2026-10-03 source integration and verified state
+
+The earlier integration list above describes the October 1 checkpoint. New
+modules 13–19, 21, 27–29 now implement DEV identity transport, nonce, reference/
+policy/sequence adapters, protected Owner binding, runtime wiring, derived history
+checks and public untrusted-input handlers. They still require approved live
+configuration and real end-to-end verification. No Operations account is assigned.
+
+Both test files now total **34 PASS**. Live read-only `package3DevPreflight`
+completed: all eight canonical tables empty, three reference master tables empty;
+GIS, role registry and policy absent; posting disabled. Live Apps Script pure smoke
+also passed. No inventory posting or real GIS sign-in was executed.
+
+See `../../implementation/PACKAGE_3_EXECUTION_RESULT_2026-10-03.md` for the
+16-part result, exact blockers, unsupported cases and acceptance boundary.
 
 Only matched verified receipts are implemented. Classified receiving variance and
 other movement reversal types remain blocked. This is not complete Package 3.
