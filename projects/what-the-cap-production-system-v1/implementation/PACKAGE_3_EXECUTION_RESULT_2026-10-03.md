@@ -112,6 +112,14 @@ Started from `99d3dfbf76792f6b98ef89b5809cb6c679193c8f`, branch
 committed with the implementation; obtain its exact SHA from Git history. Push
 result is reported separately after remote verification. No main merge.
 
+Implementation commit: `aa2910d5b0f2381f1012018154e37353854bb799`.
+Push to `refs/heads/what-the-cap-v1-dev` succeeded after a sandbox network
+connectivity failure. Read-only `git ls-remote` independently returned the same
+full SHA as local HEAD; working tree was clean at that verification. This
+following documentation update records that confirmed result, not a main merge
+or deployment. Pattern scan of staged files found no API-key/client-secret/
+private-key credential patterns (not a comprehensive security audit).
+
 ## 12. Workbook evidence
 
 Target Operations DEV: `1JNxH585ajPAOoWQpexKSF_cIpiutOdk8cAJ1Fwf8CBM`.
