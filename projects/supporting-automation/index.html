@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supporting Automation Examples | Cendrick Amorin</title>
+    <meta name="description" content="Practical business systems connecting lead capture, CRM, automation, follow-up, task management, and operational visibility. Explore Cendrick Amorin’s portfolio and demo projects.">
+    <meta name="theme-color" content="#0a0a0a">
+
+    <meta property="og:title" content="Cendrick Amorin | AI-Assisted Business Systems Builder">
+    <meta property="og:description" content="Portfolio and demo proof in CRM, automation, and ecommerce operations systems.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Cendrick Amorin | AI-Assisted Business Systems Builder">
+    <meta name="twitter:description" content="Portfolio and demo proof in CRM, automation, and ecommerce operations systems.">
+    <!-- Canonical omitted: GitHub Pages publishing configuration is not yet verified. -->
+    <!-- TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- INTER FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CUSTOM STYLES -->
+    <link rel="stylesheet" href="../../style.css">
+
+    <!-- TAILWIND EXT -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: '#C5A572',
+                        darkgold: '#9e8458'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ── Workflow Section ── */
+        .workflow-section {
+            background: #0d0d0d;
+        }
+
+        .workflow-card {
+            background: linear-gradient(145deg, #131313, #0f0f0f);
+            border: 1px solid rgba(197, 165, 114, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .workflow-card:hover {
+            border-color: rgba(197, 165, 114, 0.45);
+            transform: translateY(-4px);
+            box-shadow: 0 24px 48px rgba(197, 165, 114, 0.08);
+        }
+
+        .workflow-img-wrap {
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(197, 165, 114, 0.1);
+        }
+
+        .workflow-img-wrap img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .workflow-card:hover .workflow-img-wrap img {
+            transform: scale(1.03);
+        }
+
+        .workflow-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,10,10,0.6) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .workflow-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(197, 165, 114, 0.1);
+            border: 1px solid rgba(197, 165, 114, 0.25);
+            color: #C5A572;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            padding: 4px 10px;
+            border-radius: 999px;
+            text-transform: uppercase;
+        }
+
+        .workflow-badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #4ade80;
+            box-shadow: 0 0 6px #4ade80;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .workflow-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #9ca3af;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0a0a0a] text-white font-inter"><main id="main-content" class="project-page"><a href="../../index.html#selected-projects">← Back to Projects</a><h1>Supporting Automation Examples</h1><p>Secondary portfolio builds and an explicitly illustrative onboarding concept; no live client outcomes claimed.</p>    <!-- ================= AUTOMATION WORKFLOWS ================= -->
+    <section id="workflows" class="workflow-section py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <div class="lux-badge mx-auto mb-6" style="display:inline-block">
+                    ● HANDS-ON AUTOMATION
+                </div>
+                <h2 class="lux-section-title">Automation Workflows</h2>
+                <p class="text-gray-400 max-w-xl mx-auto mt-4">
+                    Hands-on automation systems and portfolio builds demonstrating lead capture, follow-up, AI-assisted workflows, and operational automation.
+                </p>
+            </div>
+
+            <!-- Workflow Cards -->
+            <div class="grid md:grid-cols-2 gap-10">
+
+                <!-- Card 1: Sales Pipeline -->
+                <div class="workflow-card">
+                    <div class="workflow-img-wrap">
+                        <a class="workflow-proof-link" href="../../images/sales-pipeline.png" data-proof="../../images/sales-pipeline.png" data-caption="Sales pipeline — original workflow screenshot" aria-label="Enlarge sales pipeline screenshot"><img src="../../images/sales-pipeline.png" alt="Automated Sales Pipeline & Client Nurturing System" loading="lazy" width="1917" height="916"><span class="enlarge-label">Enlarge workflow ↗</span></a>
+                        <div class="workflow-overlay"></div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="workflow-badge">Workflow build</span>
+                            <span class="text-gold text-sm font-semibold">n8n</span>
+                        </div>
+                        <h3 class="text-white font-bold text-xl leading-tight">
+                            Automated Sales Pipeline<br>& Client Nurturing System
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Demonstrates webhook lead capture, Gmail team alerts, scheduled follow-up, and Google Sheets logging. The workflow connects an incoming inquiry to a recorded next step.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="workflow-tag">Webhook</span>
+                            <span class="workflow-tag">Gmail</span>
+                            <span class="workflow-tag">Smart Wait</span>
+                            <span class="workflow-tag">Google Sheets</span>
+                            <span class="workflow-tag">Lead Nurturing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Content Engine -->
+                <div class="workflow-card">
+                    <div class="workflow-img-wrap">
+                        <a class="workflow-proof-link" href="../../images/content-engine.png" data-proof="../../images/content-engine.png" data-caption="Content engine — original workflow screenshot" aria-label="Enlarge content engine screenshot"><img src="../../images/content-engine.png" alt="AI-Powered Content Engine & Multi-Channel Distribution System" loading="lazy" width="1917" height="916"><span class="enlarge-label">Enlarge workflow ↗</span></a>
+                        <div class="workflow-overlay"></div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="workflow-badge">AI-assisted workflow</span>
+                            <span class="text-gold text-sm font-semibold">n8n + AI</span>
+                        </div>
+                        <h3 class="text-white font-bold text-xl leading-tight">
+                            AI-Powered Content Engine<br>& Multi-Channel Distribution
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Demonstrates structured form input, AI-assisted content generation, Gmail routing, Google Sheets logging, and Telegram notifications. Human review remains part of a practical content process.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="workflow-tag">Groq / Llama 3</span>
+                            <span class="workflow-tag">HTTP Request</span>
+                            <span class="workflow-tag">Google Sheets</span>
+                            <span class="workflow-tag">Telegram</span>
+                            <span class="workflow-tag">Multi-Channel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Book Funnel Automation -->
+                <div class="workflow-card">
+                    <div class="workflow-img-wrap">
+                        <a class="workflow-proof-link" href="../../images/Book Funnel Automation.png" data-proof="../../images/Book Funnel Automation.png" data-caption="Digital product funnel — original workflow screenshot" aria-label="Enlarge digital product funnel screenshot"><img src="../../images/Book Funnel Automation.png" alt="Book Funnel Automation & Lead Capture System" loading="lazy" width="1917" height="916"><span class="enlarge-label">Enlarge workflow ↗</span></a>
+                        <div class="workflow-overlay"></div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="workflow-badge">Funnel automation</span>
+                            <span class="text-gold text-sm font-semibold">n8n + GHL</span>
+                        </div>
+                        <h3 class="text-white font-bold text-xl leading-tight">
+                            Automated Book Funnel<br>& Digital Product Delivery
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Demonstrates lead capture, resource retrieval, automated email delivery, and lead logging. Sequence and upsell steps show how the customer journey can be extended.
+                        </p>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="workflow-tag">Lead Capture</span>
+                            <span class="workflow-tag">Email Sequence</span>
+                            <span class="workflow-tag">PDF Delivery</span>
+                            <span class="workflow-tag">Upsell Flow</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: clearly labeled illustrative concept, not execution evidence -->
+                <div id="client-onboarding" class="workflow-card">
+                    <div class="workflow-img-wrap">
+                        <a class="workflow-proof-link" href="../../images/client-onboarding-concept.svg" data-proof="../../images/client-onboarding-concept.svg" data-caption="Client onboarding — illustrative demo concept; not a live or tested workflow" aria-label="Enlarge client onboarding demo concept"><img src="../../images/client-onboarding-concept.svg" alt="Illustrative concept: client form, validation, Google Sheets record, checklist, welcome email and team notification. Not an actual n8n execution screenshot." loading="lazy" width="1440" height="688"><span class="enlarge-label">Enlarge demo concept ↗</span></a>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between"><span class="workflow-badge">Demo concept</span><span class="text-gold text-sm font-semibold">n8n concept</span></div>
+                        <h3 class="text-white font-bold text-xl leading-tight">Client Onboarding<br>&amp; Task Setup</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Illustrates a proposed flow from a new-client form through validation, a Google Sheets record, an onboarding checklist, a welcome email, and a team notification. Incomplete submissions route to review.</p>
+                        <p class="text-gold text-sm leading-relaxed">Demo concept using dummy data — not a live client system or tested deployment.</p>
+                        <div class="flex flex-wrap gap-2 pt-1"><span class="workflow-tag">Form Intake</span><span class="workflow-tag">Validation</span><span class="workflow-tag">Google Sheets</span><span class="workflow-tag">Task Checklist</span><span class="workflow-tag">Email / Alerts</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PORTFOLIO HUB SECTION ================= -->
+    <section class="py-24 px-6 bg-[#0a0a0a] secondary-categories">
+        <div class="max-w-7xl mx-auto text-center">
+
+            <h2 class="lux-section-title mb-4">Additional Portfolio Categories</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Explore portfolio builds focused on practical workflows, clear customer journeys, and day-to-day business operations.
+            </p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 pt-16 portfolio-grid">
+                <a href="../primeflow/index.html#primeflow" class="lux-portfolio-card group">
+                    <span class="portfolio-label">FEATURED / GOHIGHLEVEL</span>
+                    <h3 class="lux-portfolio-title">GoHighLevel / PrimeFlow</h3>
+                    <p class="lux-portfolio-text">A QA-tested lead-to-customer portfolio and demo system.</p>
+                    <span class="lux-portfolio-arrow" aria-hidden="true">→</span>
+                </a>
+
+                <a href="https://n8n-flydeala.github.io/AI-Portfolio/" target="_blank" rel="noopener noreferrer" class="lux-portfolio-card group">
+                    <h3 class="lux-portfolio-title">AI Automation</h3>
+                    <p class="lux-portfolio-text">Lead handling, notifications, and AI-assisted workflows.</p>
+                    <span class="lux-portfolio-arrow">→</span>
+                </a>
+
+                <a href="https://n8n-flydeala.github.io/ecom-portfolio/" target="_blank" rel="noopener noreferrer" class="lux-portfolio-card group">
+                    <h3 class="lux-portfolio-title">E-Commerce Systems</h3>
+                    <p class="lux-portfolio-text">Order flow, customer journeys, and fulfillment automation.</p>
+                    <span class="lux-portfolio-arrow">→</span>
+                </a>
+
+                <a href="https://n8n-flydeala.github.io/consulting-portfolio/" target="_blank" rel="noopener noreferrer" class="lux-portfolio-card group">
+                    <h3 class="lux-portfolio-title">Consulting Workflows</h3>
+                    <p class="lux-portfolio-text">Operational processes, documentation, and system reviews.</p>
+                    <span class="lux-portfolio-arrow">→</span>
+                </a>
+
+                <a href="https://n8n-flydeala.github.io/realestate-portfolio/" target="_blank" rel="noopener noreferrer" class="lux-portfolio-card group">
+                    <h3 class="lux-portfolio-title">Real Estate Automation</h3>
+                    <p class="lux-portfolio-text">Lead capture, CRM organization, and property workflows.</p>
+                    <span class="lux-portfolio-arrow">→</span>
+                </a>
+
+                <a href="#client-onboarding" class="lux-portfolio-card group">
+                    <span class="portfolio-label">DEMO CONCEPT / N8N</span>
+                    <h3 class="lux-portfolio-title">Client Onboarding &amp; Task Setup</h3>
+                    <p class="lux-portfolio-text">An illustrative intake, validation, and onboarding flow. Dummy data; not a live deployment.</p>
+                    <span class="lux-portfolio-arrow">→</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= HOW I BUILD SYSTEMS ================= -->
+    <section id="process" class="py-24 px-6 process-section" aria-labelledby="process-title">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-intro"><span class="lux-badge">HOW I WORK</span><h2 id="process-title" class="lux-section-title">How I Build Systems</h2><p>Understand the work, define the rules, and build a system people can use.</p></div>
+            <ol class="build-process">
+                <li><span>01</span><h3>Understand Reality</h3><p>Learn how the work happens today.</p></li>
+                <li><span>02</span><h3>Define Outcome</h3><p>Agree on the problem and desired result.</p></li>
+                <li><span>03</span><h3>Capture Requirements</h3><p>Clarify scope, users, and constraints.</p></li>
+                <li><span>04</span><h3>Map Process &amp; Data</h3><p>Define inputs, decisions, and handoffs.</p></li>
+                <li><span>05</span><h3>Design Architecture</h3><p>Choose a maintainable system structure.</p></li>
+                <li><span>06</span><h3>Build</h3><p>Implement the agreed workflow.</p></li>
+                <li><span>07</span><h3>Test</h3><p>Check expected behavior and failure paths.</p></li>
+                <li><span>08</span><h3>Deploy</h3><p>Release only after review and approval.</p></li>
+                <li><span>09</span><h3>Document</h3><p>Make operation and handoff clear.</p></li>
+            </ol>
+            <p class="design-principle"><strong>Design principle:</strong> Accurate <span>→</span> Simple <span>→</span> Fast <span>→</span> Trainable <span>→</span> Scalable</p>
+            <p class="portfolio-document"><a href="https://drive.google.com/file/d/1lhcjDtfbUmvS5fPccGjFqgjj2zdY1QEe/view?usp=drive_link" target="_blank" rel="noopener noreferrer">View portfolio document ↗</a></p>
+        </div>
+    </section>
+
+<a class="lux-btn-outline" href="../../index.html#contact-form">Contact Me</a></main>    <dialog id="proof-dialog" aria-labelledby="proof-caption"><div class="proof-toolbar"><p id="proof-caption"></p><button id="close-proof" aria-label="Close workflow preview">Close ×</button></div><div class="proof-scroll"><img id="proof-full-image" alt=""></div><p class="proof-note">Original project capture. Status labels in the image are not a live service or performance check.</p><a id="proof-original" target="_blank" rel="noopener noreferrer">Open original image ↗</a></dialog><script src="../../script.js" defer></script></body></html>

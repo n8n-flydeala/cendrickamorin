@@ -3,6 +3,8 @@ node_modules/
 
 # Secrets and API Keys
 .env
+.env.*
+!.env.example
 *.log
 
 # OS generated files
